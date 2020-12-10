@@ -1,0 +1,14 @@
+<div class="form">
+    <%= form_with model: @task, local: true do |f| %>
+        <div>
+            <%= f.label "タスクを入力" %>
+            <%= f.text_field :task_ja %>
+        </div><br>
+        <div>
+            <%= f.text_field :task_en %>
+        </div>
+        <div>
+            <%= f.submit  "作成", method: :post %>
+        </div>
+    <% end %>
+</div>
