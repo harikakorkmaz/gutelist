@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+.rating-difficulty2 {
+  color: red;
+}
+
+.rating-difficulty1 {
+  color: blue;
+}
+
+.rating-difficulty {
+  color: green;
+}

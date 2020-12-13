@@ -7,8 +7,18 @@
         <div>
             <%= f.text_field :task_en %>
         </div>
+        <div id="task-rating">
+            <label>難易度</label>
+        </div>
         <div>
             <%= f.submit  "作成", method: :post %>
         </div>
     <% end %>
 </div>
+
+<script>
+  $('#task-rating').raty({
+    path: '/assets/',
+    scoreName: 'task[rating]'
+  });
+</script>

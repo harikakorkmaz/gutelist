@@ -1,3 +1,9 @@
+<h2>変更前</h2>
+<%= @task.task_ja %><br>
+<%= @task.task_ja %><br>
+<div class="rating" data-score="<%= @task.rating %>"></div>
+
+<h2>変更後</h2>
 <%= form_with model: @task, local:true do |f| %>
   <% if @task.errors.any? %>
     <% task.errors.full_messages.each do |message| %>
@@ -13,10 +19,32 @@
     <%= f.label :task_en %>
     <%= f.text_field :task_en %>
   </div>
-  
-  <div class="actions row">
-    <%= f.submit "編集内容を保存する", method: :patch %>
-  </div>
-<% end %>
 
-    <%= link_to "削除", task_path(@task.id), method: :delete, class: "btn btn-danger pull-right" %>
+  <div id="task-rating">
+    <label>難易度</label>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit "保存", method: :patch %>
+  </div>
+<% end %><br>
+
+<%= link_to "変更せず戻る", tasks_path %><br>
+<%= link_to "削除", task_path(@task.id), method: :delete, class: "btn btn-danger pull-right" %>
+
+<script>
+  $('.rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('#task-rating').raty({
+    path: '/assets/',
+    scoreName: 'task[rating]'
+  });
+</script>
