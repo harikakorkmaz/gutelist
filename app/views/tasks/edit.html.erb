@@ -4,27 +4,26 @@
 <div class="rating" data-score="<%= @task.rating %>"></div>
 
 <h2>変更後</h2>
-<%= form_with model: @task, local:true do |f| %>
+<%= form_with model: @task, remote: true do |f| %>
   <% if @task.errors.any? %>
     <% task.errors.full_messages.each do |message| %>
       <li>error <%= message %></li>
     <% end %>
   <% end %>
-  <div class="field row">
-    <%= f.label :task_ja %>
-    <%= f.text_field :task_ja %>
+  <div>
+    <%= f.label "タスクを入力" %>
+    <div id="translate"><%= f.text_area :task_ja, class: "task_ja", placeholder: "日本語" %></div>
   </div>
 
-  <div class="field row">
-    <%= f.label :task_en %>
-    <%= f.text_field :task_en %>
+  <div>
+    <%= f.text_area :task_en, class: "task_en", placeholder: "英語" %>
   </div>
 
   <div id="task-rating">
-    <label>難易度</label>
+    <label>重要度</label>
   </div>
 
-  <div class="actions row">
+  <div>
     <%= f.submit "保存", method: :patch %>
   </div>
 <% end %><br>
@@ -47,4 +46,20 @@
     path: '/assets/',
     scoreName: 'task[rating]'
   });
+</script>
+
+<script>
+const task_ja = document.querySelector('.task_ja');
+const task_en = document.querySelector('.task_en');
+  translate.addEventListener('change', function() {
+    const url = "https://script.google.com/macros/s/AKfycbwMfVWHciY9Q6mw2eMpVIA-569em9ggdt3er5x75Nm-di5N8Jg/exec?text="+task_ja.value+"&source=ja&target=en";
+    const request = new XMLHttpRequest();
+    request.open("GET", url);
+
+    request.addEventListener("load", (e) => {
+      task_en.innerHTML= e.currentTarget.response;
+    });
+    task_en.innerHTML= "loading...";
+    request.send();
+  })
 </script>

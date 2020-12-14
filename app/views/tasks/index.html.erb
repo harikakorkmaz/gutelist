@@ -20,18 +20,6 @@
     <% end %>
 </div><br>
 
-
-<div class="tasks">
-    <% @tasks.each do |task| %>
-        <%= task.task_en %>
-        <%= task.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
-        <%= link_to "edit",edit_task_path(task.id) %>
-        <%= task.is_active %><br>
-        <div class="rating" data-score="<%= task.rating %>"></div>
-        <%= task.rating %>
-    <% end %>
-</div>
-
 <script>
   $('.rating').raty({
     readOnly: true,
