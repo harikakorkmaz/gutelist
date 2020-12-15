@@ -14,14 +14,42 @@
  *= require_self
  */
 
-.rating-difficulty2 {
-  color: red;
+
+
+.attachment {
+  border-radius: 50%;
 }
 
-.rating-difficulty1 {
-  color: blue;
+.tasks {
+  margin: 30px;
 }
 
-.rating-difficulty {
-  color: green;
+.passive_task2 {
+  background-color: #ff6347;
+  color: white;
+}
+
+.passive_task1 {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.passive_task {
+  background-color: #66cdaa;
+  color: white;
+}
+
+.active_task2 {
+  background-color: #b22222;
+  color: white;
+}
+
+.active_task1 {
+  background-color: #00ced1;
+  color: white;
+}
+
+.active_tasks {
+  background-color: #32cd32;
+  color: white;
 }
