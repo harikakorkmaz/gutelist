@@ -3,10 +3,10 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
-    @active_tasks = Task.where(is_active: true)
-    @passive_tasks = Task.where('updated_at > ?', Date.today)
-    @passive_tasks = @passive_tasks.where(is_active: false) 
+    tasks = current_user.tasks
+    @active_tasks = tasks.where(is_active: true)
+    @complete_tasks = tasks.where('updated_at > ?', Date.today)
+    @passive_tasks = @complete_tasks.where(is_active: false)
     @task = Task.new
   end
 
@@ -27,8 +27,16 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_back(fallback_location: root_path)
+    redirect_to complete_tasks_path
   end
+
+  def destroy_all
+    tasks = current_user.tasks
+    @passive_tasks = tasks.where(is_active: false)
+    @passive_tasks.destroy_all
+    redirect_to complete_tasks_path
+  end
+
 
   def edit
     @task = Task.find(params[:id])
@@ -49,8 +57,18 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  def change_all
+    tasks = current_user.tasks
+    @active_tasks = tasks.where(is_active: true)
+    @active_tasks.update(is_active: false)
+    redirect_to tasks_path
+  end
+
+
+
   def complete
-    @passive_tasks = Task.where(is_active: false)
+    tasks = current_user.tasks
+    @passive_tasks = tasks.where(is_active: false)
   end
 
 
