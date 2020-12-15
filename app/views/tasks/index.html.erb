@@ -1,8 +1,9 @@
 
+<%= link_to "全て完了する", change_all_tasks_path %>
 <%= link_to "作成する", new_task_path %>
-<div class="active_tasks">
+<div class="tasks">
     <% @active_tasks.each do |task| %>
-        <div class="rating-difficulty<%= task.rating %>">
+        <div class="active_task<%= task.rating %>">
             <%= task.task_en %>
             <%= task.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
             <%= link_to "編集",edit_task_path(task.id) %>
@@ -11,21 +12,11 @@
     <% end %>
 </div><br><br>
 
-<div class="passive_tasks">
+<div class="tasks">
     <% @passive_tasks.each do |task| %>
-        <div class="rating-difficulty<%= task.rating %>">
+        <div class="passive_task<%= task.rating %>">
             <%= task.task_en %>
             <%= task.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
         </div>
     <% end %>
 </div><br>
-
-<script>
-  $('.rating').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-</script>
