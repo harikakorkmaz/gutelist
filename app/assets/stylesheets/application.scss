@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< HEAD:app/assets/stylesheets/application.css
 
 a:link {
   color: #009073;
@@ -21,6 +22,10 @@ a:link {
 a:visited {
   color: #006080;
 }
+=======
+@import "bootstrap-sprockets";
+@import "bootstrap";
+>>>>>>> 980e07fcf318aa3f03b4aaf8445e3bab00a67a97:app/assets/stylesheets/application.scss
 
 .attachment {
   border-radius: 50%;
