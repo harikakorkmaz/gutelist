@@ -1,24 +1,32 @@
-
-<% if @passive_tasks.present? %>
-    <%= link_to "昨日以降の全タスクを削除", delete_all_tasks_path, method: :delete %>
-    <div class="passive_tasks">
-        <div class="row">
-            <% @passive_tasks.each do |task| %>
-                <div class="col-xs-12">
-                    <div class="passive_task<%= task.rating %>">
-                        <div class="col-xs-4"><%= task.task_en %></div>
-                        <div class="col-xs-4"><%= task.task_ja %></div>
-                        <div class="col-xs-2"><%= task.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
-                        <% if task.updated_at < Date.yesterday %>
-                            <div class="col-xs-2"><%= link_to "削除", delete_task_path(task.id), method: :delete %></div>
-                        <% end %>
+<div class="container">
+    <div class="row">
+        <% if @passive_tasks.present? %>
+            <div class="passive_tasks">
+                <div class="row">
+                    <div class="complete_index col-xs-12">
+                        <table class="table">
+                            <% @passive_tasks.each do |task| %>
+                                <%if task.updated_at < Date.today %>
+                                    <tr class="task_table d<%= task.rating %>">
+                                        <td style="width:30%"><%= task.task_en %></td>
+                                        <td style="width:30%"><%= task.task_ja %></td>
+                                        <td style="width:30%"><%= task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+                                        <td style="width:10%">
+                                            <% if task.updated_at < Date.yesterday %>
+                                                <%= link_to "削除", delete_task_path(task.id), method: :delete %>
+                                            <% end %>
+                                        </td>
+                                    </tr>
+                                <% end %>
+                            <% end %>
+                        </table>
                     </div>
                 </div>
-            <% end %>
-        </div>
-    </div>
-<% else %>
-    <h3>完了済タスクはありません</h3>
-<% end %>
+            </div>
+        <% else %>
+            <h3>完了済タスクはありません</h3>
+        <% end %>
 
-<%= link_to "トップ", tasks_path %>
+        <%= link_to "トップへ", tasks_path, class: "btn btn-warning" %>
+    </div>
+</div>

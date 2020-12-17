@@ -1,35 +1,42 @@
-<h2>変更前</h2>
-<%= @task.task_ja %><br>
-<%= @task.task_en %><br>
-<div class="rating" data-score="<%= @task.rating %>"></div>
-
-<h2>変更後</h2>
-<%= form_with model: @task, remote: true do |f| %>
-  <% if @task.errors.any? %>
-    <% task.errors.full_messages.each do |message| %>
-      <li>error <%= message %></li>
-    <% end %>
-  <% end %>
-  <div>
-    <%= f.label "タスクを入力" %>
-    <div id="translate"><%= f.text_area :task_ja, class: "task_ja", placeholder: "日本語" %></div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-hover">
+      	<thead>
+      	  <%= form_with model: @task, remote: true do |f| %>
+        		<tr>
+        		  <th style="width:6%"></th>
+        			<th style="width:47%"><h3 class="text-center">変更前</h3></th>
+        			<th style="width:47%"><h3 class="text-center">変更後</h3></th>
+        		</tr>
+        	</thead>
+        	<tbody class="text-center">
+        		<tr>
+        			<td><label>日本語</label></td>
+        			<td><%= @task.task_ja %></td>
+        			<td><div id="translate"><%= f.text_area :task_ja, class: "task_ja", placeholder: "日本語", size: "50x2" %></div></td>
+        		</tr>
+        		<tr>
+        			<td><label>重要度</label></td>
+        			<td><span class="rating" data-score="<%= @task.rating %>"></span></td>
+        			<td class="star"><%= f.select :rating, [["☆☆", ""], ["★☆︎", 1], ["★★︎", 2]] %></td>
+        		</tr>
+        		<tr>
+        			<td><label>英語</label></td>
+        			<td><%= @task.task_en %></td>
+        			<td><%= f.text_area :task_en, class: "task_en", placeholder: "英語", size: "50x2" %></td>
+        		</tr>
+        		<tr>
+        			<td><%= link_to "戻る", tasks_path, class: "btn btn-success" %></td>
+        			<td><%= link_to "削除", task_path(@task.id), method: :delete, class: "btn btn-danger" %></td>
+        			<td><%= f.submit "保存", method: :patch %></td>
+        		</tr>
+      		<% end %>
+      	</tbody>
+      </table>
+    </div>
   </div>
-
-  <div>
-    <%= f.text_area :task_en, class: "task_en", placeholder: "英語" %>
-  </div>
-
-  <div id="task-rating">
-    <label>重要度</label>
-  </div>
-
-  <div>
-    <%= f.submit "保存", method: :patch %>
-  </div>
-<% end %><br>
-
-<%= link_to "変更せず戻る", tasks_path %><br>
-<%= link_to "削除", task_path(@task.id), method: :delete, class: "btn btn-danger pull-right" %>
+</div>
 
 <script>
   $('.rating').raty({
@@ -42,13 +49,8 @@
 </script>
 
 <script>
-  $('#task-rating').raty({
-    path: '/assets/',
-    scoreName: 'task[rating]'
-  });
-</script>
-
-<script>
+const task_ja = document.querySelector('.task_ja');
+const task_en = document.querySelector('.task_en');
   translate.addEventListener('change', function() {
     const url = "https://script.google.com/macros/s/AKfycbwMfVWHciY9Q6mw2eMpVIA-569em9ggdt3er5x75Nm-di5N8Jg/exec?text="+task_ja.value+"&source=ja&target=en";
     const request = new XMLHttpRequest();

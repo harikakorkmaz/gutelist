@@ -30,13 +30,17 @@ class TasksController < ApplicationController
     redirect_to complete_tasks_path
   end
 
-  def destroy_all
-    tasks = current_user.tasks
-    deletable_tasks = tasks.where(updated_at < Date.yesterday)
-    @passive_tasks = deletable_tasks.where(is_active: false)
-    @passive_tasks.destroy_all
-    redirect_to complete_tasks_path
-  end
+  # def destroy_all
+  #   if self == nil?
+  #     redirect_to complete_tasks_path
+  #   else
+  #     tasks = current_user.tasks
+  #     deletable_tasks = tasks.where(updated_at < Date.yesterday)
+  #     @passive_tasks = deletable_tasks.where(is_active: false)
+  #     @passive_tasks.destroy_all
+  #     redirect_to complete_tasks_path
+  #   end
+  # end
 
 
   def edit

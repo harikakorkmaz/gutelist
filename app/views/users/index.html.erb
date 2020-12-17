@@ -1,18 +1,27 @@
-<table class="table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @users.each do |user| %>
-		<tr>
-			<td><%= attachment_image_tag(user, :image, :fill, 50, 50) %></td>
-			<td><%= user.name %></td>
-			<td><%= link_to "Show", user_path(user.id) %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class="container">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td>
+					<%= link_to user_path(user.id) do %>
+						<%= attachment_image_tag(user, :image, :fill, 50, 50) %>
+					<% end %>
+				</td>
+				<td class="user_name">
+					<%= link_to user_path(user.id) do %>
+						<i class="fas fa-user"></i>
+						<%= user.name %>
+					<% end %><br>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

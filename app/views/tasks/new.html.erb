@@ -1,19 +1,24 @@
-<div class="form">
-  <%= form_with model: @task, remote: true do |f| %>
-    <div>
-      <%= f.label "タスクを入力" %>
-      <div id="translate"><%= f.text_area :task_ja, class: "task_ja", placeholder: "日本語" %></div>
-    </div>
-    <div>
-      <%= f.text_area :task_en, class: "task_en", placeholder: "英語" %>
-    </div>
-    <div id="task-rating">
-      <label>重要度</label>
-    </div>
-    <div>
-      <%= f.submit  "作成", method: :post %>
-    </div>
-  <% end %>
+<div class="container"></div>
+  <div class="text-center col-xs-12">
+    <%= form_with model: @task, remote: true do |f| %>
+      <h2>タスクを入力</h2>
+      <div class="form-contents">
+        <div id="translate"><%= f.text_area :task_ja, class: "task_ja", placeholder: "日本語" %></div>
+      </div>
+      <div class="form-contents">
+        <div id="task-rating">
+          <label>重要度</label>
+        </div>
+      </div>
+      <div class="form-contents">
+        <%= f.text_area :task_en, class: "task_en", placeholder: "英語" %><br>
+        <%= f.label "※自動で入力されない場合はリロードしてください" %>
+      </div>
+      <div class="form-contents">
+        <%= f.submit  "作成", method: :post %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <script>

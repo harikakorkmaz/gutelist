@@ -13,55 +13,125 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< HEAD:app/assets/stylesheets/application.css
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 a:link {
-  color: #009073;
+  color: #006080;
 }
 
 a:visited {
   color: #006080;
 }
-=======
-@import "bootstrap-sprockets";
-@import "bootstrap";
->>>>>>> 980e07fcf318aa3f03b4aaf8445e3bab00a67a97:app/assets/stylesheets/application.scss
+
+header {
+  background-color: #ffa600;
+}
+
+footer {
+  background-color: #ffa600;
+}
+
+.main_group {
+  padding: 15px;
+  border: 5px ridge #31A9EE;
+}
 
 .attachment {
+  margin-right: 5px;
   border-radius: 50%;
-  box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+}
+
+.main_task {
+  font-size: 20px;
+  color: white;
+}
+
+.task {
+  border-radius:  5px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+  margin: 10px;
+  padding: 5px;
+}
+
+.star {
+  color: #ff8000;
+  font-size: 20px;
+}
+
+.form-contents {
+  margin : 50px;
 }
 
 .tasks {
   margin: 30px;
 }
 
-.passive_task2 {
-  background-color: #ff6347;
+.d2 {
+  background-color: #c93a40;
+  opacity : 0.95;
   color: white;
 }
 
-.passive_task1 {
-  background-color: #1e90ff;
+.d1 {
+  background-color: #00afcc;
   color: white;
 }
 
-.passive_task {
-  background-color: #66cdaa;
+.d {
+  background-color: #29cc29;
+  opacity : 0.95;
   color: white;
 }
+.ribbon16-wrapper {
+  display: block;
+  position: relative;
+  margin: 15px auto;
+  padding: 10px 0;
+  width: 300px;
+  background: #f1f1f1;
+  box-sizing: border-box;
+  }
 
-.active_task2 {
-  background-color: #b22222;
+.ribbon16 {
+  display: inline-block;
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  margin: 0;
+  padding: 10px 0 7px;
+  z-index: 2;
+  width: 40px;
+  text-align: center;
   color: white;
+  font-size: 13px;
+  background: #ffa600;
+  border-radius: 2px 0 0 0;
+  }
+
+.ribbon16:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: -5px;
+  border: none;
+  border-bottom: solid 6px #d07676;
+  border-right: solid 5px transparent;
 }
 
-.active_task1 {
-  background-color: #00ced1;
-  color: white;
+.ribbon16:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  height: 0;
+  width: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 10px solid #ffa600;
 }
 
-.active_tasks {
-  background-color: #32cd32;
-  color: white;
+.task_table {
+  opacity: 0.6;
 }

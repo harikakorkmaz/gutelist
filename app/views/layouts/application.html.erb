@@ -10,46 +10,49 @@
   </head>
   <body>
     <header class="navbar">
-      <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-        <div>
-          <%= link_to user_path(current_user) do %>
-            <%= attachment_image_tag(current_user, :image, :fill, 35, 35) %>
-            <%= current_user.name %>
+      <div class="container">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <%= attachment_image_tag(current_user, :image, :fill, 30, 30) %>
+                <span><%= current_user.name %></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_user_path(current_user) do %>
+                <i class="fas fa-user-cog"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to tasks_path do %>
+                <i class="fas fa-tasks"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to users_path do %>
+                <i class="fas fa-users"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-user-times"></i>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_registration_path do%>
+                <i class="fas fa-user-plus"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path do %>
+                <i class="fas fa-user-check"></i>
+              <% end %>
+            </li>
           <% end %>
-
-          <%= link_to edit_user_path(current_user) do %>
-            <i class="fas fa-user-cog"></i>
-          <% end %>
-        </div>
-        <li>
-          <%= link_to tasks_path do %>
-            <i class="fas fa-tasks"></i>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to users_path do %>
-            <i class="fas fa-users"></i>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fas fa-user-times"></i>
-          <% end %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to new_user_registration_path do%>
-            <i class="fas fa-user-plus"></i>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_session_path do %>
-            <i class="fas fa-user-check"></i>
-          <% end %>
-        </li>
-      <% end %>
-      </ul>
+        </ul>
+      </div>
     </header>
     <main>
       <%= yield %>

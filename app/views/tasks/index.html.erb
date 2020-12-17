@@ -1,30 +1,51 @@
-
-<%= link_to change_all_tasks_path do %>
-    <i class="fas fa-check-circle fa-3x"></i>
-<% end %>
-<%= link_to new_task_path do %>
-    <i class="fas fa-plus fa-3x"></i>
-<% end %>
-<div class="tasks">
-    <% @active_tasks.each do |task| %>
-        <div class="active_task<%= task.rating %>">
-            <%= task.task_en %>
-            <%= task.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-            <%= link_to edit_task_path(task.id) do %>
-                <i class="fas fa-edit"></i>
-            <% end %>
-            <%= link_to change_task_path(task.id), method: :patch  do%>
-                <i class="fas fa-check-circle"></i>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-9">
+            <h2>タスク一覧</h2>
+        </div>
+        <div class="col-xs-3">
+           <%= link_to new_task_path,class: "btn btn-warning btn-block", data: {"turbolinks"=>false} do %>
+               <i class="fas fa-plus">タスクを作成</i>
             <% end %>
         </div>
-    <% end %>
-</div><br><br>
-
-<div class="tasks">
-    <% @passive_tasks.each do |task| %>
-        <div class="passive_task<%= task.rating %>">
-            <%= task.task_en %>
-            <%= task.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
+    </div>
+    <div class="main_group row">
+        <div class="col-xs-12">
+            <% @active_tasks.each do |task| %>
+                <div class="col-xs-4">
+                    <div class="task d<%= task.rating %> text-center">
+                        <div class="main_task"><%= task.task_en %><br></div>
+                        <%= link_to edit_task_path(task.id),data: {"turbolinks"=>false} do %>
+                            <i class="main_task fas fa-edit fa-2x"></i>
+                        <% end %>
+                        <%= task.created_at.strftime('%Y/%m/%d %H:%M') %>
+                        <%= link_to change_task_path(task.id), method: :patch  do%>
+                            <i class="main_task fas fa-check-circle fa-2x"></i>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div><br>
+        <div class="task_new text-right col-xs-12">
+            <%= link_to change_all_tasks_path, method: :patch do %>
+                <i class="fas fa-check-circle">全て完了する</i>
+            <% end %>
         </div>
-    <% end %>
-</div><br>
+    </div><br><br>
+
+    <h2>本日完了のタスク</h2>
+    <div class="main_group row">
+        <% @passive_tasks.each do |task| %>
+            <div class="col-xs-3">
+                <span class="ribbon16"><i class="fas fa-check-circle fa-2x"></i></span>
+                <div class="task d<%= task.rating %> text-center">
+                    <%= task.task_en %><br>
+                    <%= task.updated_at.strftime('%Y/%m/%d %H:%M') %>
+                </div><br>
+            </div>
+        <% end %>
+        <div class="col-xs-12">
+            <%= link_to "過去のタスク", complete_tasks_path, class: "btn btn-warning btn-lg btn-block" %>
+        </div>
+    </div><br>
+</div>

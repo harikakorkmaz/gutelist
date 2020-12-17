@@ -1,29 +1,35 @@
-    <% if @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li>error <%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-<h1>User info</h1>
-  <%= form_with model: @user do |f| %>
-  	<div>
-	    <%= f.label "ユーザー名" %><br>
-	    <%= f.text_field :name %>
-	  </div>
-	  <div>
-	    <%= f.label "プロフィール画像" %><br>
-	    <img id="preview" width="200" height="200"><br>
-	    <%= f.attachment_field :image %>
-	  </div>
-		<div>
-			<%= f.label "プロフィール文" %><br>
-			<%= f.text_area :introduction %>
-		</div>
-    <div>
-    	<%= f.submit "保存" %>
-    </div>
+<div class="container">
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li>error <%= message %></li>
+      <% end %>
+    </ul>
   <% end %>
+  <h1 class="text-center">ユーザー情報</h1><br>
+    <%= form_with model: @user do |f| %>
+      <div class="row">
+    	  <div class="col-xs-4">
+    	    <%= f.label "プロフィール画像" %><br>
+    	    <img id="preview" width="200" height="200"><br>
+    	    <%= f.attachment_field :image %>
+    	  </div>
+        <div class="col-xs-4">
+    	    <%= f.label "ユーザー名" %><br>
+    	    <%= f.text_field :name %>
+    	  </div>
+    		<div class="col-xs-4">
+    			<%= f.label "プロフィール文" %><br>
+    			<%= f.text_area :introduction %>
+    		</div>
+    	</div>
+  		<div class="row">
+        <div class="text-right col-xs-10">
+        	<%= f.submit "保存", class: "btn btn-info btn-lg" %>
+        </div>
+      </div>
+    <% end %>
+</div>
 
 <script>
   $('#user_image').on('change', function (e) {
