@@ -1,15 +1,21 @@
 
 <% if @passive_tasks.present? %>
-    <%= link_to "全ての完了済タスクを削除", delete_all_tasks_path, method: :delete %>
+    <%= link_to "昨日以降の全タスクを削除", delete_all_tasks_path, method: :delete %>
     <div class="passive_tasks">
-        <% @passive_tasks.each do |task| %>
-            <div class="passive_task<%= task.rating %>">
-                <%= task.task_en %>
-                <%= task.task_ja %>
-                <%= task.updated_at.strftime('%Y/%m/%d %H:%M:%S') %>
-                <%= link_to "削除", delete_task_path(task.id), method: :delete %>
-            </div>
-        <% end %>
+        <div class="row">
+            <% @passive_tasks.each do |task| %>
+                <div class="col-xs-12">
+                    <div class="passive_task<%= task.rating %>">
+                        <div class="col-xs-4"><%= task.task_en %></div>
+                        <div class="col-xs-4"><%= task.task_ja %></div>
+                        <div class="col-xs-2"><%= task.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+                        <% if task.updated_at < Date.yesterday %>
+                            <div class="col-xs-2"><%= link_to "削除", delete_task_path(task.id), method: :delete %></div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
     </div>
 <% else %>
     <h3>完了済タスクはありません</h3>

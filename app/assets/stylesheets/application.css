@@ -14,10 +14,17 @@
  *= require_self
  */
 
+a:link {
+  color: #009073;
+}
 
+a:visited {
+  color: #006080;
+}
 
 .attachment {
   border-radius: 50%;
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.25);
 }
 
 .tasks {

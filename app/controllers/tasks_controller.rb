@@ -32,7 +32,8 @@ class TasksController < ApplicationController
 
   def destroy_all
     tasks = current_user.tasks
-    @passive_tasks = tasks.where(is_active: false)
+    deletable_tasks = tasks.where(updated_at < Date.yesterday)
+    @passive_tasks = deletable_tasks.where(is_active: false)
     @passive_tasks.destroy_all
     redirect_to complete_tasks_path
   end
@@ -68,7 +69,8 @@ class TasksController < ApplicationController
 
   def complete
     tasks = current_user.tasks
-    @passive_tasks = tasks.where(is_active: false)
+    @complete_tasks = tasks.where('updated_at > ?', !Date.today)
+    @passive_tasks = @complete_tasks.where(is_active: false)
   end
 
 
@@ -77,3 +79,4 @@ class TasksController < ApplicationController
       params.require(:task).permit(:task_ja, :task_en, :rating, :is_active)
     end
 end
+

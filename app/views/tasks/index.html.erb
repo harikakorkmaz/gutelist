@@ -1,13 +1,21 @@
 
-<%= link_to "全て完了する", change_all_tasks_path %>
-<%= link_to "作成する", new_task_path %>
+<%= link_to change_all_tasks_path do %>
+    <i class="fas fa-check-circle fa-3x"></i>
+<% end %>
+<%= link_to new_task_path do %>
+    <i class="fas fa-plus fa-3x"></i>
+<% end %>
 <div class="tasks">
     <% @active_tasks.each do |task| %>
         <div class="active_task<%= task.rating %>">
             <%= task.task_en %>
             <%= task.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-            <%= link_to "編集",edit_task_path(task.id) %>
-            <%= link_to "完了", change_task_path(task.id), method: :patch %><br>
+            <%= link_to edit_task_path(task.id) do %>
+                <i class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to change_task_path(task.id), method: :patch  do%>
+                <i class="fas fa-check-circle"></i>
+            <% end %>
         </div>
     <% end %>
 </div><br><br>
