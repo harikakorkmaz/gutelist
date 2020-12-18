@@ -11,9 +11,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @users.each do |user| %>
+					<% @all_ranks.each.with_index(1) do |user, i| %>
 					<tr>
-						<td></td>
+						<td class="text-center"><h3><%= i %>位</h3></td>
 						<td>
 							<%= link_to user_path(user.id) do %>
 								<%= attachment_image_tag(user, :image, :fill, 50, 50) %>

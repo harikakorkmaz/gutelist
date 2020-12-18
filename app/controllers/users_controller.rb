@@ -23,11 +23,25 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @all_ranks = User.find(Task.where(is_active: false).group(:user_id).order('count(user_id) desc').pluck(:user_id))
   end
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def followings
+    @user  = User.find(params[:user_id])
+    @title = @user.name + " さんのフォロワー"
+    @users = @user.followings
+    render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:user_id])
+    @title = @user.name + " さんをフォロー中"
+    @users = @user.followers
+    render 'show_follow'
   end
 
   private

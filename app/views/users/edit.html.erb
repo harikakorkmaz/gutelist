@@ -6,28 +6,30 @@
       <% end %>
     </ul>
   <% end %>
-<h1 class="text-center">ユーザー情報</h1><br>
+<h2 class="text-center">ユーザー情報</h2><br>
   <div class="row">
-    <div class="col-xs-4">
-      <%= form_with model: @user do |f| %>
-      <%= f.label "プロフィール画像" %><br>
-      <img id="preview" width="200" height="200"><br>
-      <%= f.attachment_field :image %>
-    </div>
-    <div class="col-xs-4">
-      <%= f.label "ユーザー名" %><br>
-      <%= f.text_field :name %>
-    </div>
-    <div class="col-xs-4">
-      <%= f.label "プロフィール文" %><br>
-      <%= f.text_area :introduction %>
-    </div>
-    <div class="row">
-      <div class="text-right col-xs-10">
-      <%= f.submit "保存", class: "btn btn-info btn-lg" %>
+    <div class="main_group col-xs-12">
+      <div class="col-xs-4">
+        <%= form_with model: @user, local: true do |f| %>
+        <h4><%= f.label "プロフィール画像" %></h4><br>
+        <img id="preview" width="200" height="200"><br>
+        <%= f.attachment_field :image %>
       </div>
+      <div class="col-xs-4">
+        <h4><%= f.label "ユーザー名" %></h4><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="col-xs-4">
+        <h4><%= f.label "プロフィール文" %></h4><br>
+        <%= f.text_area :introduction %>
+      </div>
+      <div class="row">
+        <div class="text-right col-xs-12">
+        <%= f.submit "保存", class: "btn btn-info btn-lg" %>
+        </div>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 
