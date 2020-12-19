@@ -42,7 +42,6 @@ class TasksController < ApplicationController
   #   end
   # end
 
-
   def edit
     @task = Task.find(params[:id])
   end
@@ -69,8 +68,6 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-
-
   def complete
     @ranking_target_tasks = []
     @yesterday_tasks = Task.where('updated_at > ?', Date.yesterday)
@@ -85,10 +82,9 @@ class TasksController < ApplicationController
     @tasks = @passive_tasks.page(params[:page]).per(13)
   end
 
-
   private
-    def task_params
-      params.require(:task).permit(:task_ja, :task_en, :rating, :is_active)
-    end
-end
 
+  def task_params
+    params.require(:task).permit(:task_ja, :task_en, :rating, :is_active)
+  end
+end

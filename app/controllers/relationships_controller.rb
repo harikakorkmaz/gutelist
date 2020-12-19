@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-
   before_action :authenticate_user!
 
   def create
@@ -25,5 +24,4 @@ class RelationshipsController < ApplicationController
     @users = @user.followers
     render 'show_follow'
   end
-
 end

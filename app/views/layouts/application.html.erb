@@ -27,7 +27,7 @@
             </li>
             <li></li>
             <li class="header_button">
-              <%= link_to edit_user_path(current_user) do %>
+              <%= link_to edit_user_path(current_user), data: {"turbolinks"=>false} do %>
                 <i class="fas fa-user-cog">設定</i>
               <% end %>
             </li>
