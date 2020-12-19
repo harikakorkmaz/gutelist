@@ -1,4 +1,0 @@
-DB_USERNAME="rds-mysql-server"
-DB_PASSWORD="korkmaz8"
-DB_HOST="rds-mysql-server.cvw5zmx4qon3.ap-northeast-1.rds.amazonaws.com"
-DB_DATABASE="gutelist"
