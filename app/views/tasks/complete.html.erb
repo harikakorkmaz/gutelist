@@ -5,15 +5,15 @@
                 <div class="row">
                     <div class="complete_index col-xs-12">
                         <table class="table">
-                            <% @passive_tasks.each do |task| %>
+                            <% @tasks.each do |task| %>
                                 <%if task.updated_at < Date.today %>
                                     <tr class="task_table d<%= task.rating %>">
-                                        <td style="width:30%"><%= task.task_en %></td>
-                                        <td style="width:30%"><%= task.task_ja %></td>
-                                        <td style="width:30%"><%= task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
-                                        <td style="width:10%">
+                                        <td style="width:40%"><%= task.task_en %></td>
+                                        <td style="width:40%"><%= task.task_ja %></td>
+                                        <td style="width:15%"><%= task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+                                        <td style="width:5%">
                                             <% if task.updated_at < Date.yesterday %>
-                                                <%= link_to "削除", delete_task_path(task.id), method: :delete %>
+                                                <%= link_to "削除", delete_task_path(task.id), method: :delete, class: "btn btn-warning", data: {confirm: "タスクを削除すると、ランキング結果が下がる可能性があります。"} %>
                                             <% end %>
                                         </td>
                                     </tr>
@@ -26,7 +26,5 @@
         <% else %>
             <h3>完了済タスクはありません</h3>
         <% end %>
-
-        <%= link_to "トップへ", tasks_path, class: "btn btn-warning" %>
     </div>
-</div>
+    <div class="text-center"><%= paginate @tasks %></div>

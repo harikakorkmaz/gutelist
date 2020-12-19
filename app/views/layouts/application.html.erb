@@ -5,49 +5,56 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/4d0aeef251.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <header class="navbar">
       <div class="container">
+        <nav class="logo nav navbar-nav navbar-left">
+          <%= link_to image_tag('logo.png',:width => "170",:height => "40", class: "pull-right"), root_path %>
+        </nav>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li>
               <%= link_to user_path(current_user) do %>
-                <%= attachment_image_tag(current_user, :image, :fill, 30, 30) %>
+                <%= attachment_image_tag(current_user, :image, :fill, 35, 35) %>
                 <span><%= current_user.name %></span>
               <% end %>
             </li>
-            <li>
-              <%= link_to edit_user_path(current_user) do %>
-                <i class="fas fa-user-cog"></i>
+            <li></li>
+            <li class="header_button">
+              <%= link_to edit_user_path(current_user), data: {"turbolinks"=>false} do %>
+                <i class="fas fa-user-cog">設定</i>
               <% end %>
             </li>
-            <li>
+            <li class="header_button">
               <%= link_to tasks_path do %>
-                <i class="fas fa-tasks"></i>
+                <i class="fas fa-tasks">タスク</i>
               <% end %>
             </li>
-            <li>
+            <li class="header_button">
               <%= link_to users_path do %>
-                <i class="fas fa-users"></i>
+                <i class="fas fa-users">ランキング</i>
               <% end %>
             </li>
-            <li>
+            <li class="header_button">
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fas fa-user-times"></i>
+                <i class="fas fa-user-times">ログアウト</i>
               <% end %>
             </li>
           <% else %>
-            <li>
+            <li class="header_button">
               <%= link_to new_user_registration_path do%>
-                <i class="fas fa-user-plus"></i>
+                <i class="fas fa-user-plus">新規登録</i>
               <% end %>
             </li>
-            <li>
+            <li class="header_button">
               <%= link_to new_user_session_path do %>
-                <i class="fas fa-user-check"></i>
+                <i class="fas fa-user-check">ログイン</i>
               <% end %>
             </li>
           <% end %>
@@ -57,7 +64,7 @@
     <main>
       <%= yield %>
     </main>
-    <footer>
+    <footer class="footer">
     </footer>
   </body>
 </html>

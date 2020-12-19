@@ -51,28 +51,28 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-end
-
-gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
