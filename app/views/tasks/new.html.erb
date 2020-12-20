@@ -13,9 +13,14 @@
         <div id="translate"><%= f.text_area :task_ja, class: "task_ja", size: "40x3", placeholder: "日本語で入力後、カーソルを離して翻訳開始" %></div>
       </div>
       <div class="form-contents">
-        <div id="task-rating">
-          <label>重要度</label>
-        </div>
+        <tr>
+    			<td><label>重要度</label></td>
+    			<td><span class="rating" data-score="<%= @task.rating %>"></span></td>
+    			<td class="star"><%= f.select :rating, [["☆☆", ""], ["★☆︎", 1], ["★★︎", 2]] %></td>
+    		</tr>
+        <!--<div id="task-rating">-->
+          <!--  <label>重要度</label>-->
+        <!--</div>-->
       </div>
       <div class="form-contents">
         <%= f.text_area :task_en, class: "task_en", size: "40x3", placeholder: "英語（自動で翻訳されます）" %><br>
@@ -30,6 +35,8 @@
 
 <script>
   $('#task-rating').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
     path: '/assets/',
     scoreName: 'task[rating]'
   });
