@@ -1,4 +1,11 @@
 <div class="container"></div>
+  <% if @task.errors.any? %>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li>error <%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="text-center col-xs-12">
     <%= form_with model: @task, remote: true do |f| %>
       <h2>タスクを入力</h2>

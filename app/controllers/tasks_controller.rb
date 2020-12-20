@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
+
   def top
   end
 
@@ -15,10 +17,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new
     @task.user_id = current_user.id
-    if @task.save
-      redirect_to '/tasks', notice: "追加されました"
+    if @task.save(task_params)
+      redirect_to '/tasks'
     else
       render '/tasks/new'
     end
@@ -48,7 +50,8 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    if @task.update(task_params)
+    @task =Task.new
+    if @task.save(task_params)
       redirect_to tasks_path, notice: "変更されました"
     else
       render 'index'
@@ -69,12 +72,6 @@ class TasksController < ApplicationController
   end
 
   def complete
-    @ranking_target_tasks = []
-    @yesterday_tasks = Task.where('updated_at > ?', Date.yesterday)
-    tasks = @yesterday_tasks.where(is_active: false)
-
-    @ranking_target_tasks << tasks
-
     tasks = current_user.tasks
     @complete_tasks = tasks.where('updated_at > ?', !Date.today)
     @passive_tasks = @complete_tasks.where(is_active: false)
