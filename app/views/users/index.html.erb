@@ -21,14 +21,15 @@
 						</td>
 						<td class="user_name">
 							<%= link_to user_path(user.id) do %>
-								<i class="fas fa-user"></i>
+								<i class="fas fa-user fa-1.5x"></i>
 								<%= user.name %>
 							<% end %><br>
 						</td>
 						<td>
-							<div>
+							<div class="text-center">
 								<% if current_user.following?(user) %>
-								  <label>フォロー中</label>
+								  <i class="fas fa-user-friends fa-2x"></i>
+								  <p>フォロー中</p>
 								<% end %>
 							</div>
 						</td>
