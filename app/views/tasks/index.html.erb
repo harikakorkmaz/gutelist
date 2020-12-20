@@ -27,7 +27,7 @@
             <% end %>
         </div><br>
         <div class="task_new text-right col-xs-12">
-            <%= link_to change_all_tasks_path, method: :patch do %>
+            <%= link_to change_all_tasks_path, method: :patch, data: {confirm: "タスクを全て完了します"}  do %>
                 <i class="fas fa-check-circle">全て完了する</i>
             <% end %>
         </div>
