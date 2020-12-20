@@ -9,8 +9,8 @@ RSpec.describe 'Taskモデルのテスト', type: :model do
         task.task_ja = ''
         expect(task.valid?).to eq false;
       end
-      it '5文字以上であること' do
-        task.task_ja = Faker::Lorem.characters(number:4)
+      it '4文字以上であること' do
+        task.task_ja = Faker::Lorem.characters(number:3)
         expect(task.valid?).to eq false;
       end
     end

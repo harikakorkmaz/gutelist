@@ -167,3 +167,58 @@ footer {
    width: 100%;
    border-top: 10px solid #ffa600;
 }
+
+.top1{
+  background-image: image-url("top1.png");
+  width: auto;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top2{
+  background-image: image-url("top3.png");
+  width: auto;
+  height: 530px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top3{
+  background-image: image-url("top2.png");
+  width: auto;
+  height: 500px;
+  margin-bottom: 20px ;
+  padding-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top_group {
+  margin: 40px 0;
+  border-radius:  10px;
+  border: 5px ridge #31A9EE;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+}
+
+.top-text {
+  line-height: 300%;
+}
+
+.logo-top {
+  size: 90%;
+  margin-top: 40px;
+}
+
+.box7{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #ffa600;/*左線*/
+    border-right: double 7px #ffa600;/*右線*/
+}
+.box7 p {
+    margin: 0;
+    padding: 0;
+}
