@@ -22,18 +22,13 @@
       <% end %>
     </div>
   </div><br>
-  <div class="box7 row">
-    <div class="text-center col-xs-12">
-      <h1 class="top-text">ぐてリストとは？</h>
-      <h4 class="top-text">
-        日本語で入力されたタスクを自動翻訳によって英語で表示するサイトです。<br>
-        作成したタスクは、重要度に応じて自動で色分けされます。<br>
-        一見では英語版のみ表示されますが、詳細&編集画面から日本語で入力された情報も見ることができます。<br>
-        TOPページには、未完了タスクと本日の完了済タスクが表示されます。<br>
-        完了済タスクページから過去のタスクを確認することができます。<br>
-        他ユーザーのプロフィールを見ることができたり、フォローすることができます。<br>
-        タスク完了数に応じてランキングが表示されます。<br>
-      </h4>
-    </div>
+  <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="text-center col-xs-4">
+      <%= link_to about_path do %>
+        <h2>ぐてリストとは <%= image_tag("about.png", size: "90x90") %></h2><br>
+      <% end %>
+    </div><br>
+    <div class="col-xs-4"></div>
   </div><br>
-</div>
+</div><br>
