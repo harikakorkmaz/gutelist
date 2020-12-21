@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root 'tasks#top'
 
+  get "/about" => "tasks#about", as: "about"
+
   devise_for :users
 
   resources :tasks, only: [:index, :new, :create, :edit, :update, :change, :complete_tasks] do
