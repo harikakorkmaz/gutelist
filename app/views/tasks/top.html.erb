@@ -2,7 +2,7 @@
   <div class="row">
     <div class="top-text text-center col-xs-12">
       <div class="logo-top"><%= image_tag("logo.png") %></div>
-      <h2 class="top-text">英語を自分事に</h2>
+      <h2 class="top-text">英語を自分事に。</h2>
       <h3 class="top-text">
           何年も英語に触れているのに苦手意識が抜けない、上達しない。<br>
           それは、英語を他人事にしているからではないでしょうか。<br>
@@ -12,7 +12,7 @@
   </div><br>
   <div class="row">
     <div class="col-xs-6">
-      <%= link_to new_user_registration_path, class: "btn btn-warning btn-lg btn-block" do%>
+      <%= link_to new_user_registration_path, class: "btn btn-warning btn-lg btn-block" do %>
         <i class="fas fa-user-plus">新規登録</i>
       <% end %>
     </div>
@@ -22,31 +22,18 @@
       <% end %>
     </div>
   </div><br>
-  <div class="row">
-    <div class="box7 col-xs-12">
-      <h2 class="text-center">タスク作成</h2><br>
-      <h4 class="text-center">
-        タスクを日本語で入力すると、自動で英語に翻訳されます。<br>
-        タスク重要度を設定することができます。
+  <div class="box7 row">
+    <div class="text-center col-xs-12">
+      <h1 class="top-text">ぐてリストとは <%= image_tag("about.png", size: "80x80") %></h>
+      <h4 class="top-text">
+        日本語で入力されたタスクを自動翻訳によって英語で表示するサイトです。<br>
+        作成したタスクは、重要度に応じて自動で色分けされます。<br>
+        一見では英語版のみ表示されますが、詳細&編集画面から日本語で入力された情報も見ることができます。<br>
+        TOPページには、未完了タスクと本日の完了済タスクが表示されます。<br>
+        完了済タスクページから過去のタスクを確認することができます。<br>
+        他ユーザーのプロフィールを見ることができたり、フォローすることができます。<br>
+        タスク完了数に応じてランキングが表示されます。<br>
       </h4>
-      <div class="top_group col-xs-5">
-        <div class="top2"></div>
-      </div>
-      <div class="col-xs-2"></div>
-      <div class="top_group col-xs-5">
-        <div class="top3"></div>
-      </div>
     </div>
   </div><br>
-  <div class="box7 row">
-      <h2 class="text-center">タスク一覧</h2><br>
-      <h4 class="text-center">
-        トップ画面にタスク一覧が表示されます。<br>
-        作成時に設定したタスク重要度によって自動で色分けされます。<br>
-        タスク完了ボタンを押すと、完了済タスクへ移行します。
-      </h4>
-    <div class="top_group col-xs-12">
-      <div class="top1"></div>
-    </div>
-  </div>
 </div>

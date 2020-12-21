@@ -16,7 +16,7 @@
 						<td class="text-center"><h3><%= i %>位</h3></td>
 						<td>
 							<%= link_to user_path(user.id) do %>
-								<%= attachment_image_tag(user, :image, :fill, 50, 50) %>
+								<%= attachment_image_tag(user, :image, size: "50x50", fallback: "noImg.jpg", size: "50x50") %>
 							<% end %>
 						</td>
 						<td class="user_name">

@@ -6,7 +6,7 @@
                     <div class="complete_index col-xs-12">
                         <table class="table">
                             <% @tasks.each do |task| %>
-                                <%if task.updated_at < Date.today %>
+                                <%if task.is_active == false %>
                                     <tr class="task_table d<%= task.rating %>">
                                         <td style="width:40%"><%= task.task_en %></td>
                                         <td style="width:40%"><%= task.task_ja %></td>

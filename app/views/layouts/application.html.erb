@@ -21,7 +21,7 @@
           <% if user_signed_in? %>
             <li>
               <%= link_to user_path(current_user) do %>
-                <%= attachment_image_tag(current_user, :image, :fill, 35, 35) %>
+                <%= attachment_image_tag(current_user, :image, size: "35x35", fallback: "noImg.jpg", size: "35x35") %>
                 <span><%= current_user.name %></span>
               <% end %>
             </li>
@@ -42,6 +42,11 @@
               <% end %>
             </li>
             <li class="header_button">
+              <%= link_to about_path do %>
+                <i class="fas fa-question-circle">ぐてリストとは</i>
+              <% end %>
+            </li>
+            <li class="header_button">
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fas fa-user-times">ログアウト</i>
               <% end %>
@@ -50,6 +55,11 @@
             <li class="header_button">
               <%= link_to new_user_registration_path do%>
                 <i class="fas fa-user-plus">新規登録</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to about_path do %>
+                <i class="fas fa-question-circle">ぐてリストとは</i>
               <% end %>
             </li>
             <li class="header_button">
