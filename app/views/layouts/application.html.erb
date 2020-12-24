@@ -38,7 +38,7 @@
               <% end %>
             </li>
             <li class="header_button">
-              <%= link_to users_path do %>
+              <%= link_to ranking_users_path do %>
                 <i class="fas fa-users">ランキング</i>
               <% end %>
             </li>
@@ -75,8 +75,8 @@
     <main>
       <div class="container">
         <p id="notice"><%= notice %></p>
-      </div>
-      <%= yield %>
+        <%= yield %><br>
+      </div><br>
     </main>
     <footer class="footer">
     </footer>

@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'users#followings', as: 'followings'
     get 'followers' => 'users#followers', as: 'followers'
+
+    collection do
+      get 'ranking' => 'users#ranking', as: 'ranking'
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

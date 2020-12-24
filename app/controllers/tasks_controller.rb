@@ -74,12 +74,6 @@ class TasksController < ApplicationController
   end
 
   def complete
-    @ranking_target_tasks = []
-    @yesterday_tasks = Task.where('updated_at > ?', Date.yesterday)
-    tasks = @yesterday_tasks.where(is_active: false)
-
-    @ranking_target_tasks << tasks
-
     tasks = current_user.tasks
     @complete_tasks = tasks.where('updated_at > ?', !Date.today)
     @passive_tasks = @complete_tasks.where(is_active: false)
