@@ -1,16 +1,19 @@
 <div class="container"></div>
-  <% if @task.errors.any? %>
-    <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li>error <%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <div class="row">
+    <% if @task.errors.present? %>
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li>error <%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
   <div class="text-center col-xs-12">
     <%= form_with model: @task, remote: true do |f| %>
       <h2>タスクを入力</h2>
       <div class="form-contents">
         <div id="translate"><%= f.text_area :task_ja, class: "task_ja", size: "40x3", placeholder: "日本語で入力後、カーソルを離して翻訳開始" %></div>
+        <%= f.label "※最低4文字以上" %>
       </div>
       <div class="form-contents">
         <div id="task-rating">
@@ -21,7 +24,7 @@
         <%= f.text_area :task_en, class: "task_en", size: "40x3", placeholder: "英語（自動で翻訳されます）" %><br>
         <%= f.label "※自動で入力されない場合はリロードしてください" %>
       </div>
-      <div class="form-contents">
+      <div class="submit">
         <%= f.submit  "作成", method: :post %>
       </div>
     <% end %>

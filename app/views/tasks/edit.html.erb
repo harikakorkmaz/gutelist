@@ -21,7 +21,10 @@
         		<tr>
         			<td><label>日本語</label></td>
         			<td><%= @task.task_ja %></td>
-        			<td><div id="translate"><%= f.text_area :task_ja, class: "task_ja", placeholder: "日本語", size: "50x2" %></div></td>
+        			<td>
+        			  <div id="translate"><%= f.text_area :task_ja, class: "task_ja", placeholder: "日本語", size: "50x2" %></div>
+                <%= f.label "※最低4文字以上" %>
+        			</td>
         		</tr>
         		<tr>
         			<td><label>重要度</label></td>
