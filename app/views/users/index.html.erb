@@ -11,7 +11,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @all_ranks.each.with_index(1) do |user, i| %>
+					<% @ranking.each.with_index(1) do |user, i| %>
 					<tr>
 						<td class="text-center"><h3><%= i %>位</h3></td>
 						<td>
@@ -37,5 +37,6 @@
 				</tbody>
 			</table>
 		</div><br>
+	<div class="text-center"><%= paginate @ranking %></div><br>
 	</div><br>
 </div><br>
