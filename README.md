@@ -27,6 +27,9 @@ Get used to English(英語に慣れる)の頭文字をとりました。
 ### 主な利用シーン
 日常生活でのタスク管理
 
+## 設計書
+https://docs.google.com/spreadsheets/d/1O3AOfP5oadgQrJuhIVwjtAyP99fvGPkwEegb1Hu2dPE/edit#gid=1287297668
+
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1yOyAfTLTmr4cLwHEWo-rbx8XJXJy-hTj_RBrnoiZEc8/edit#gid=705990360
 
