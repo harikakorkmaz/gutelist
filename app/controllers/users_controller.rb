@@ -23,6 +23,12 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
+    @users = User.page(params[:page]).per(15)
+    @users_total = User.count
+  end
+
+  def ranking
     @ranking = User.find(Task.where(is_active: false).group(:user_id).order('count(user_id) desc').pluck(:user_id))
   end
 
