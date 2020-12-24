@@ -12,6 +12,52 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    default_task1 = Task.new
+    default_task1.user_id = @user.id
+    default_task1.task_ja = "ぐてリストに新規登録する"
+    default_task1.task_en = "sign up for the gutelist"
+    default_task1.rating = 2
+    default_task1.is_active = false
+    default_task1.save
+
+    default_task2 = Task.new
+    default_task2.user_id = @user.id
+    default_task2.task_ja = "プロフィール画像を登録する"
+    default_task2.task_en = "Set up your profile image"
+    default_task2.rating = 2
+    default_task2.is_active = true
+    default_task2.save
+
+    default_task3 = Task.new
+    default_task3.user_id = @user.id
+    default_task3.task_ja = "自己紹介を登録する"
+    default_task3.task_en = "Set up your introduction"
+    default_task3.rating = 1
+    default_task3.is_active = true
+    default_task3.save
+
+    default_task4 = Task.new
+    default_task4.user_id = @user.id
+    default_task4.task_ja = "誰かをフォローする"
+    default_task4.task_en = "Follow someone"
+    default_task4.is_active = true
+    default_task4.save
+
+    default_task5 = Task.new
+    default_task5.user_id = @user.id
+    default_task5.task_ja = "ランキングを見る"
+    default_task5.task_en = "View ranking"
+    default_task5.rating = 1
+    default_task5.is_active = true
+    default_task5.save
+
+    default_task5 = Task.new
+    default_task5.user_id = @user.id
+    default_task5.task_ja = "タスクを作成する"
+    default_task5.task_en = "Create a task"
+    default_task5.rating = 2
+    default_task5.is_active = true
+    default_task5.save
   end
 
   # GET /resource/edit
