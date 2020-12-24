@@ -24,7 +24,6 @@ class UsersController < ApplicationController
 
   def index
     @ranking = User.find(Task.where(is_active: false).group(:user_id).order('count(user_id) desc').pluck(:user_id))
-    @ranking = User.page(params[:page]).per(10)
   end
 
   def show
