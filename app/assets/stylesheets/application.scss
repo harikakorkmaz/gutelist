@@ -101,7 +101,7 @@ footer {
 }
 
 .d {
-  background-color: #29cc29;
+  background-color: #2d9b41;
   opacity : 0.95;
   color: white;
 }
@@ -244,3 +244,148 @@ footer {
 .mail {
   color: white;
 }
+
+.blank {
+ padding: 25px;
+}
+
+ .responsive-navbar {
+  margin: 0px;
+}
+
+/* ---------------------------- */
+/* ---- ハンバーガーアイコン ---- */
+/* ---------------------------- */
+#hm-icon {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+}
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.menu-trigger {
+  position: relative;
+  width: 50px;
+  height: 44px;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-child(1) {
+  top: 0;
+}
+.menu-trigger span:nth-child(2) {
+  top: 20px;
+}
+.menu-trigger span:nth-child(3) {
+  bottom: 0;
+}
+.menu-trigger.active span:nth-child(1) {
+  -webkit-transform: translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg);
+  background-color: #fff;
+}
+.menu-trigger.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-trigger.active span:nth-child(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+  background-color: #fff;
+}
+/* ------------------------ */
+/* ------ spメニュー ------ */
+/* ------------------------ */
+#sp-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: 9;
+}
+#sp-menu li {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#sp-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media screen and (min-width:993px) {
+  .create-task-responsive {
+    display: none;
+  }
+}
+
+@media screen and (min-width:769px) {
+   .responsive-navbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width:992px) {
+  footer {
+    display: none;
+  }
+
+  .text_area {
+    margin: auto;
+
+  }
+
+  .create-task {
+    display: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .task {
+  border-radius:  5px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+  margin: 7px 0;
+  padding: 0px;
+  }
+
+  .main_task {
+  font-size: 23px;
+  color: white;
+  padding: 0px;
+  }
+
+  .main_group {
+  padding: 5px;
+  border-radius:  7px;
+  border: none;
+  box-shadow: none;
+  }
+
+  .task-group {
+    padding: 0;
+    margin: 0;
+  }
+
+  .completed-task {
+    size: 60%;
+  }
+
+  .navbar {
+    display: none;
+  }
+}
+
