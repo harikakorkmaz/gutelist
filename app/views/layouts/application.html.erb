@@ -75,14 +75,59 @@
     </header>
     <header class="responsive-navbar">
       <div id="sp-menu">
-      <h2>MENU</h2>
-      <ul>
-        <li><a href="#">MENU1</a></li>
-        <li><a href="#">MENU2</a></li>
-        <li><a href="#">MENU3</a></li>
-        <li><a href="#">MENU4</a></li>
-        <li><a href="#">MENU5</a></li>
-      </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to image_tag('logo.png',:width => "170",:height => "40", class: "pull-center"), root_path %></li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <%= attachment_image_tag(current_user, :image, size: "35x35", fallback: "noImg.jpg", size: "35x35") %>
+                <span><%= current_user.name %></span>
+              <% end %>
+            </li>
+            <li></li>
+            <li class="header_button">
+              <%= link_to edit_user_path(current_user), data: {"turbolinks"=>false} do %>
+                <i class="fas fa-user-cog"> 設定</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to tasks_path do %>
+                <i class="fas fa-tasks"> タスク</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to ranking_users_path do %>
+                <i class="fas fa-users"> ランキング</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to about_path do %>
+                <i class="fas fa-question-circle"> ぐてリストとは</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-user-times"> ログアウト</i>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="header_button">
+              <%= link_to new_user_registration_path do%>
+                <i class="fas fa-user-plus"> 新規登録</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to about_path do %>
+                <i class="fas fa-question-circle"> ぐてリストとは</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to new_user_session_path do %>
+                <i class="fas fa-user-check"> ログイン</i>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
     </div>
 
     <div id="hm-icon">
@@ -93,24 +138,16 @@
       </a>
     </div>
 
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-
-    <script src="javascripts/jquery.min.js"></script>
-    <script src="javascripts/menu.js"></script>
-
     </header>
     <main>
       <div class="container">
         <p id="notice"><%= notice %></p>
         <%= yield %><br>
       </div><br>
+
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/menu.js"></script>
+
     </main>
     <footer class="footer">
       <div class="container">
