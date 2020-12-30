@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def followings
     @user  = User.find(params[:user_id])
-    @title = @user.name + " さんのフォロワー"
+    @title = @user.name + " さんがフォロー中"
     @users = @user.followings
     render 'show_follow'
   end

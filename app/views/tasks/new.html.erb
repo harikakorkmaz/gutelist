@@ -10,7 +10,7 @@
   </div>
   <div class="text-center col-xs-12">
     <%= form_with model: @task, remote: true do |f| %>
-      <h2>タスクを入力</h2>
+      <h2>タスク作成</h2><br>
       <div class="text_area">
         <div id="translate"><%= f.text_area :task_ja, class: "task_ja", size: "38x3", placeholder: "日本語で入力後、ポインタを離して翻訳開始" %></div>
         <%= f.label "※最低4文字以上" %>
@@ -23,12 +23,17 @@
       <div class="text_area">
         <%= f.text_area :task_en, class: "task_en", size: "38x3", placeholder: "英語（自動で翻訳されます）" %><br>
         <%= f.label "※自動で入力されない場合はリロードしてください" %>
-      </div>
+      </div><br>
       <div class="submit">
-        <%= f.submit  "作成", method: :post %>
+        <%= f.submit  "保存", method: :post, class: "btn btn-warning" %>
       </div>
     <% end %>
   </div><br>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="blank"></div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-4"></div>
     <div class="text-center col-md-4">

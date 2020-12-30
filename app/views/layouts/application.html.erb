@@ -72,8 +72,9 @@
           <% end %>
         </ul>
       </div>
+    <main>
     </header>
-    <header class="responsive-navbar">
+    <div class="responsive-navbar">
       <div id="sp-menu">
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to image_tag('logo.png',:width => "170",:height => "40", class: "pull-center"), root_path %></li>
@@ -85,11 +86,6 @@
               <% end %>
             </li>
             <li></li>
-            <li class="header_button">
-              <%= link_to edit_user_path(current_user), data: {"turbolinks"=>false} do %>
-                <i class="fas fa-user-cog"> 設定</i>
-              <% end %>
-            </li>
             <li class="header_button">
               <%= link_to tasks_path do %>
                 <i class="fas fa-tasks"> タスク</i>
@@ -138,8 +134,7 @@
       </a>
     </div>
 
-    </header>
-    <main>
+    </div>
       <div class="container">
         <p id="notice"><%= notice %></p>
         <%= yield %><br>

@@ -4,19 +4,27 @@
             <div class="passive_tasks">
                 <div class="row">
                     <div class="complete_index col-xs-12">
-                        <table class="table">
+                    <h2 class="text-center"><i class="fas fa-check-circle"></i> 過去のタスク</h2>
                             <% @tasks.each do |task| %>
                                 <%if task.is_active == false %>
-                                    <tr class="task_table d<%= task.rating %>">
-                                        <td style="width:40%"><%= task.task_en %></td>
-                                        <td style="width:40%"><%= task.task_ja %></td>
-                                        <td style="width:15%"><%= task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
-                                        <td style="width:5%">
-                                            <% if task.updated_at < Date.yesterday %>
-                                                <%= link_to "削除", delete_task_path(task.id), method: :delete, class: "btn btn-warning", data: {confirm: "タスクを削除すると、ランキング結果が下がる可能性があります。"} %>
-                                            <% end %>
-                                        </td>
-                                    </tr>
+                                    <div class="d<%= task.rating %> col-xs-12">
+                                        <div class="col-sm-5">
+                                            <%= task.task_en %>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <%= task.task_ja %>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="col-xs-9"><%= task.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
+                                            <div class="col-xs-3">
+                                                <% if task.updated_at < Date.yesterday %>
+                                                    <%= link_to delete_task_path(task.id), method: :delete, class:"btn btn-warning" do %>
+                                                        <i class="fas fa-trash"></i>
+                                                    <% end %>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <% end %>
                             <% end %>
                         </table>
@@ -24,7 +32,8 @@
                 </div>
             </div>
         <% else %>
-            <h3>完了済タスクはありません</h3>
+            <h2 class="text-center"><i class="fas fa-frown"></i> タスクがありません</h2>
         <% end %>
     </div>
-    <div class="text-center"><%= paginate @tasks %></div>
+    <div class="text-center"><%= paginate @tasks %></div><br>
+</div>
