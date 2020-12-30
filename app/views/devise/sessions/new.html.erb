@@ -1,24 +1,27 @@
-<h2>ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-offset-4">
+      <div class="form-user style-1 rounded has-shadow-1">
+        <div class="form-header text-center">
+          <h2 class="form-header-title"><i class="fas fa-user-check"></i> ログイン</h2>
+        </div><br>
+        <div class="form-body">
+          <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
+          <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+          <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+          <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %><br>
+            <div class="form-group has-icon">
+              <span class="fa fa-envelope form-control-icon" aria-hidden="true"> メールアドレス</span>
+              <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder: "メールアドレス"%>
+            </div><br>
+            <div class="form-group has-icon">
+              <span class="fa fa-lock form-control-icon" aria-hidden="true"> パスワード</span>
+              <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder: "パスワード" %>
+            </div><br>
+            <%= f.submit "ログイン", class:"btn btn-block btn-info mt-20" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
+</div>

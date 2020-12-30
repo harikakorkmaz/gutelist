@@ -275,6 +275,15 @@ footer {
   margin-top: 30px;
   margin-right: 40px;
 }
+
+.trash:link {
+    color: #ffa600;
+  }
+
+.trash:visited {
+    color: #ffa600;
+  }
+
 /* ---------------------------- */
 /* ---- ハンバーガーアイコン ---- */
 /* ---------------------------- */
@@ -406,6 +415,55 @@ footer {
 
   .create-task {
     display: none;
+  }
+
+  .top1{
+  background-image: image-url("top1.png");
+  width: auto;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top2{
+  background-image: image-url("top3.png");
+  width: auto;
+  height: 530px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top3{
+  background-image: image-url("top2.png");
+  width: auto;
+  height: 500px;
+  margin-bottom: 20px ;
+  padding-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top4 {
+  background-image: image-url("ranking.png");
+  width: auto;
+  height: 425px;
+  margin-bottom: 20px ;
+  padding-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.top_group {
+  margin: 0;
+}
+
+.top-text {
+  line-height: 150%;
+}
+
+.logo-top {
+    size: 50%;
+    margin-top: 40px;
   }
 }
 

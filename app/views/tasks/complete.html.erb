@@ -3,26 +3,20 @@
         <% if @passive_tasks.present? %>
             <div class="passive_tasks">
                 <div class="row">
-                    <div class="complete_index col-xs-12">
-                    <h2 class="text-center"><i class="fas fa-check-circle"></i> 過去のタスク</h2>
+                    <div class="complete_index main_group col-xs-12">
+                    <h2 class="text-center"><i class="far fa-check-circle"></i> 過去のタスク</h2>
                             <% @tasks.each do |task| %>
                                 <%if task.is_active == false %>
-                                    <div class="d<%= task.rating %> col-xs-12">
-                                        <div class="col-sm-5">
-                                            <%= task.task_en %>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <%= task.task_ja %>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <div class="col-xs-9"><%= task.updated_at.strftime('%Y/%m/%d %H:%M') %></div>
-                                            <div class="col-xs-3">
-                                                <% if task.updated_at < Date.yesterday %>
-                                                    <%= link_to delete_task_path(task.id), method: :delete, class:"btn btn-warning" do %>
-                                                        <i class="fas fa-trash"></i>
-                                                    <% end %>
+                                    <div class="col-sm-3">
+                                        <div class="task d<%= task.rating %> text-center">
+                                            <%= task.task_ja %><br>
+                                            <%= task.task_en %><br>
+                                            <%= task.updated_at.strftime('%Y/%m/%d %H:%M') %>
+                                            <% if task.updated_at < Date.yesterday %>
+                                                <%= link_to delete_task_path(task.id), method: :delete, class: "trash" do %>
+                                                    <i class="fas fa-trash-alt fa-2x"></i>
                                                 <% end %>
-                                            </div>
+                                            <% end %>
                                         </div>
                                     </div>
                                 <% end %>

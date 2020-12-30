@@ -20,12 +20,12 @@
                 <div class="col-sm-4">
                     <div class="task d<%= task.rating %> text-center">
                         <div class="main_task"><%= task.task_en %><br></div>
-                        <%= link_to edit_task_path(task.id),data: {"turbolinks"=>false} do %>
-                            <i class="main_task fas fa-edit fa-2x"></i>
+                        <%= link_to edit_task_path(task.id), data: {"turbolinks"=>false} do %>
+                            <i class="main_task fas fa-edit"></i>
                         <% end %>
                         <%= task.created_at.strftime('%Y/%m/%d %H:%M') %>
                         <%= link_to change_task_path(task.id), method: :patch  do%>
-                            <i class="main_task fas fa-check-circle fa-2x"></i>
+                            <i class="main_task fas fa-check-circle"></i>
                         <% end %>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="task d<%= task.rating %> text-center">
                     <%= task.task_en %><br>
                     <%= task.updated_at.strftime('%Y/%m/%d %H:%M') %>
-                </div><br>
+                </div>
             </div>
         <% end %>
         <div class="col-xs-12">
