@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="top-text text-center col-xs-12">
-      <div class="logo-top"><%= image_tag("logo.png") %></div>
+      <div class="logo-top">
+        <%= image_tag("logo.png",:width => "250",:height => "60") %>
+      </div>
       <h2 class="top-text">英語を自分事に。</h2>
       <h3 class="top-text">
           何年も英語に触れているのに苦手意識が抜けない、上達しない。<br>
@@ -23,11 +25,20 @@
       <% end %>
     </div>
   </div><br>
+  <div class="container">
+    <div class="row">
+      <div class="text-center info col-xs-12">
+        <h2><i class="fas fa-info-circle"></i>お知らせ</h2>
+        <h4>2020年12月31日</h4>
+        <h4>スマートフォンからも快適にご使用いただけるよう対応いたしました。</h4>
+      </div>
+    </div>
+  </div><br>
   <div class="row">
     <div class="col-xs-4"></div>
     <div class="text-center col-xs-4">
       <%= link_to about_path do %>
-        <h2>ぐてリストとは <%= image_tag("about.png", size: "90x90") %></h2><br>
+        <h2>ぐてリストとは <%= image_tag("about.png", size: "30x30") %></h2><br>
       <% end %>
     </div><br>
     <div class="col-xs-4"></div>

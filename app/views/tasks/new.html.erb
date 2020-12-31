@@ -10,9 +10,9 @@
   </div>
   <div class="text-center col-xs-12">
     <%= form_with model: @task, remote: true do |f| %>
-      <h2>タスクを入力</h2>
-      <div class="form-contents">
-        <div id="translate"><%= f.text_area :task_ja, class: "task_ja", size: "40x3", placeholder: "日本語で入力後、カーソルを離して翻訳開始" %></div>
+      <h2>タスク作成</h2><br>
+      <div class="text_area">
+        <div id="translate"><%= f.text_area :task_ja, class: "task_ja", size: "38x3", placeholder: "日本語で入力後、ポインタを離して翻訳開始" %></div>
         <%= f.label "※最低4文字以上" %>
       </div>
       <div class="form-contents">
@@ -20,18 +20,23 @@
             <label>重要度</label>
         </div>
       </div>
-      <div class="form-contents">
-        <%= f.text_area :task_en, class: "task_en", size: "40x3", placeholder: "英語（自動で翻訳されます）" %><br>
+      <div class="text_area">
+        <%= f.text_area :task_en, class: "task_en", size: "38x3", placeholder: "英語（自動で翻訳されます）" %><br>
         <%= f.label "※自動で入力されない場合はリロードしてください" %>
-      </div>
+      </div><br>
       <div class="submit">
-        <%= f.submit  "作成", method: :post %>
+        <%= f.submit  "保存", method: :post, class: "btn btn-warning" %>
       </div>
     <% end %>
   </div><br>
   <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="text-center box7 col-xs-4">
+    <div class="col-xs-12">
+      <div class="blank"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="text-center col-md-4">
       <i class="far fa-question-circle fa-2x"></i><br>
       <h4>重要度の色分け</h4><br>
       <div class="col-xs-4">
@@ -39,8 +44,8 @@
         <div class="d new_box"></div>
       </div>
       <div class="col-xs-4">
-        <i class="far fa-star fa-2x"></i>
         <i class="fas fa-star fa-2x"></i>
+        <i class="far fa-star fa-2x"></i>
         <div class="d1 new_box"></div>
       </div>
       <div class="col-xs-4">
@@ -49,7 +54,7 @@
         <div class="d2 new_box"></div>
       </div>
     </div>
-    <div class="col-xs-4"></div>
+    <div class="col-md-4"></div>
   </div><br>
 </div>
 
@@ -61,21 +66,21 @@
   });
 </script>
 
-
 <script>
-const task_ja = document.querySelector('.task_ja');
-const task_en = document.querySelector('.task_en');
+  document.addEventListener("turbolinks:load", function() {
+  const task_ja = document.querySelector('.task_ja');
+  const task_en = document.querySelector('.task_en');
 
-  translate.addEventListener('change', function() {
-    const url = "https://script.google.com/macros/s/AKfycbwMfVWHciY9Q6mw2eMpVIA-569em9ggdt3er5x75Nm-di5N8Jg/exec?text="+task_ja.value+"&source=ja&target=en";
-    const request = new XMLHttpRequest();
-    request.open("GET", url);
+    translate.addEventListener('change', function() {
+      const url = "https://script.google.com/macros/s/AKfycbwMfVWHciY9Q6mw2eMpVIA-569em9ggdt3er5x75Nm-di5N8Jg/exec?text="+task_ja.value+"&source=ja&target=en";
+      const request = new XMLHttpRequest();
+      request.open("GET", url);
 
-    request.addEventListener("load", (e) => {
-      task_en.innerHTML= e.currentTarget.response;
-    });
-    task_en.innerHTML= "loading...";
-    request.send();
-  })
+      request.addEventListener("load", (e) => {
+        task_en.innerHTML= e.currentTarget.response;
+      });
+      task_en.innerHTML= "loading...";
+      request.send();
+    })
+})
 </script>
-

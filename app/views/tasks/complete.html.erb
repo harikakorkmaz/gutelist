@@ -3,20 +3,22 @@
         <% if @passive_tasks.present? %>
             <div class="passive_tasks">
                 <div class="row">
-                    <div class="complete_index col-xs-12">
-                        <table class="table">
+                    <div class="complete_index main_group col-xs-12">
+                    <h2 class="text-center"><i class="far fa-check-circle"></i> 過去のタスク</h2>
                             <% @tasks.each do |task| %>
                                 <%if task.is_active == false %>
-                                    <tr class="task_table d<%= task.rating %>">
-                                        <td style="width:40%"><%= task.task_en %></td>
-                                        <td style="width:40%"><%= task.task_ja %></td>
-                                        <td style="width:15%"><%= task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
-                                        <td style="width:5%">
+                                    <div class="col-sm-3">
+                                        <div class="task d<%= task.rating %> text-center">
+                                            <%= task.task_ja %><br>
+                                            <%= task.task_en %><br>
+                                            <%= task.updated_at.strftime('%Y/%m/%d %H:%M') %>
                                             <% if task.updated_at < Date.yesterday %>
-                                                <%= link_to "削除", delete_task_path(task.id), method: :delete, class: "btn btn-warning", data: {confirm: "タスクを削除すると、ランキング結果が下がる可能性があります。"} %>
+                                                <%= link_to delete_task_path(task.id), method: :delete, class: "trash" do %>
+                                                    <i class="fas fa-trash-alt fa-2x"></i>
+                                                <% end %>
                                             <% end %>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </div>
                                 <% end %>
                             <% end %>
                         </table>
@@ -24,7 +26,8 @@
                 </div>
             </div>
         <% else %>
-            <h3>完了済タスクはありません</h3>
+            <h2 class="text-center"><i class="fas fa-frown"></i> タスクがありません</h2>
         <% end %>
     </div>
-    <div class="text-center"><%= paginate @tasks %></div>
+    <div class="text-center"><%= paginate @tasks %></div><br>
+</div>

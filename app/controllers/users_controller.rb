@@ -10,7 +10,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      render "edit"
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -38,7 +43,7 @@ class UsersController < ApplicationController
 
   def followings
     @user  = User.find(params[:user_id])
-    @title = @user.name + " さんのフォロワー"
+    @title = @user.name + " さんがフォロー中"
     @users = @user.followings
     render 'show_follow'
   end

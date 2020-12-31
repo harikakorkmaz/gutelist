@@ -4,6 +4,7 @@
     <title>Gutelist</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://kit.fontawesome.com/4d0aeef251.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
@@ -71,12 +72,78 @@
           <% end %>
         </ul>
       </div>
-    </header>
     <main>
+    </header>
+    <div class="responsive-navbar">
+      <div id="sp-menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= image_tag('logo.png',:width => "170",:height => "40", class: "pull-center") %></li>
+          <li><%= link_to "トップ",root_path %></li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to user_path(current_user) do %>
+                <%= attachment_image_tag(current_user, :image, size: "35x35", fallback: "noImg.jpg", size: "35x35") %>
+                <span><%= current_user.name %></span>
+              <% end %>
+            </li>
+            <li></li>
+            <li class="header_button">
+              <%= link_to tasks_path do %>
+                <i class="fas fa-tasks"> タスク</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to ranking_users_path do %>
+                <i class="fas fa-users"> ランキング</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to about_path do %>
+                <i class="fas fa-question-circle"> ぐてリストとは</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-user-times"> ログアウト</i>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="header_button">
+              <%= link_to new_user_registration_path do%>
+                <i class="fas fa-user-plus"> 新規登録</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to about_path do %>
+                <i class="fas fa-question-circle"> ぐてリストとは</i>
+              <% end %>
+            </li>
+            <li class="header_button">
+              <%= link_to new_user_session_path do %>
+                <i class="fas fa-user-check"> ログイン</i>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+    </div>
       <div class="container">
         <p id="notice"><%= notice %></p>
         <%= yield %><br>
       </div><br>
+
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/menu.js"></script>
+
     </main>
     <footer class="footer">
       <div class="container">
