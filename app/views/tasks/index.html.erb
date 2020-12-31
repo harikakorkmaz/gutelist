@@ -32,8 +32,14 @@
             <% end %>
         </div><br>
         <div class="task_new text-right col-xs-12">
-            <%= link_to change_all_tasks_path, method: :patch, data: {confirm: "タスクを全て完了します"}  do %>
-                <i class="fas fa-check-circle">全て完了する</i>
+            <% if @active_tasks.present? %>
+                <%= link_to change_all_tasks_path, class: "text-right btn btn-warning",method: :patch do %>
+                    <i class="fas fa-check-circle">全て完了する</i>
+                <% end %>
+            <% else %>
+                <%= link_to new_task_path, class: "desktop-ver btn btn-lg btn-block btn-warning", data: {"turbolinks"=>false} do %>
+                    <i class="fas fa-plus-circle"> タスクがありません、タスクを作成しましょう！</i>
+                <% end %>
             <% end %>
         </div>
     </div><br><br>

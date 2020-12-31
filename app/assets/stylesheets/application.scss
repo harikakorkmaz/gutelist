@@ -380,16 +380,17 @@ footer {
 }
 
 @media screen and (max-width:768px) {
+
+
+  h2, h3, h4, h5 {
+   font-size: 90%;
+  }
+
+
   .task {
   border-radius:  5px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
   margin: 13px 0;
-  padding: 0px;
-  }
-
-  .main_task {
-  font-size: 23px;
-  color: white;
   padding: 0px;
   }
 
@@ -417,53 +418,51 @@ footer {
     display: none;
   }
 
-  .top1{
-  background-image: image-url("top1.png");
-  width: auto;
-  height: 600px;
-  background-size: cover;
-  background-position: center;
-}
+  .desktop-ver {
+    display: none;
+  }
 
-.top2{
-  background-image: image-url("top3.png");
-  width: auto;
-  height: 530px;
-  background-size: cover;
-  background-position: center;
-}
+  .top1 {
+    background-image: none;
+    width: 0;
+    height: 0;
+    background-size: 0;
+    background-position: 0;
+  }
 
-.top3{
-  background-image: image-url("top2.png");
-  width: auto;
-  height: 500px;
-  margin-bottom: 20px ;
-  padding-bottom: 20px;
-  background-size: cover;
-  background-position: center;
-}
+  .top2 {
+    background-image: none;
+    width: 0;
+    height: 0;
+    background-size: 0;
+    background-position: 0;
+  }
 
-.top4 {
-  background-image: image-url("ranking.png");
-  width: auto;
-  height: 425px;
-  margin-bottom: 20px ;
-  padding-bottom: 20px;
-  background-size: cover;
-  background-position: center;
-}
+  .top3 {
+    background-image: none;
+    width: 0;
+    height: 0;
+    background-size: 0;
+    background-position: 0;
+  }
 
-.top_group {
-  margin: 0;
-}
+  .top4 {
+    background-image: none;
+    width: 0;
+    height: 0;
+    background-size: 0;
+    background-position: 0;
+  }
 
-.top-text {
-  line-height: 150%;
-}
+  .top_group {
+    margin: 0;
+    border-radius:  none;
+    border: none;
+    box-shadow: none;
+  }
 
-.logo-top {
-    size: 50%;
-    margin-top: 40px;
+  .top-text {
+    line-height: 150%;
   }
 }
 
