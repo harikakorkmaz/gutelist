@@ -10,7 +10,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    if @user.id == current_user.id
+      render "edit"
+    else
+      redirect_to root_path
+    end
   end
 
   def update
