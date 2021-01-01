@@ -67,8 +67,13 @@ class TasksController < ApplicationController
 
   def change
     @task = Task.find(params[:id])
-    @task.update(is_active: false)
-    redirect_to tasks_path
+    if @task.is_active == true
+      @task.update(is_active: false)
+      redirect_to tasks_path
+    else
+      @task.update(is_active: true)
+      redirect_to tasks_path
+    end
   end
 
   def change_all
