@@ -305,6 +305,21 @@ footer {
   color: white;
 }
 
+.flex {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: calc(40vmin);
+  height: calc(30vmin);
+}
+
+.complete-task {
+  width: 9vmin;
+  height: 9vmin;
+  border-radius:  5px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+  margin: 0.5vmin;
+}
+
 /* ---------------------------- */
 /* ---- ハンバーガーアイコン ---- */
 /* ---------------------------- */
@@ -484,6 +499,21 @@ footer {
 
   .top-text {
     line-height: 150%;
+  }
+
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(80vmin);
+    height: calc(60vmin);
+  }
+
+  .complete-task {
+    width: 18vmin;
+    height: 18vmin;
+    border-radius:  5px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+    margin: 1vmin;
   }
 }
 

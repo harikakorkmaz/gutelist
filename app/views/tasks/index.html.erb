@@ -47,14 +47,16 @@
     <h2>本日完了のタスク</h2>
     <div class="task-group row">
         <div class="main_group col-sm-6">
+            <div class="flex">
             <% @passive_tasks.each do |task| %>
-                <div class="completed-task d<%= task.rating %>">
+                <div class="complete-task d<%= task.rating %>">
                     <%= link_to edit_task_path(task.id), class: "link-text" do %>
                         <i class="fas fa-eye"></i>
                     <% end %>
                 </div>
             <% end %>
-            <div class="col-xs-12">
+            </div><br>
+            <div class="col-sm-12">
                 <%= link_to "完了タスク一覧", complete_tasks_path, class: "btn btn-warning btn-lg btn-block" %>
             </div><br>
         </div>
