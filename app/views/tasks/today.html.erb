@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>本日完了のタスク</h2>
+    <div class="task-group main_group row">
+        <% @passive_tasks.each do |task| %>
+            <div class="completed-task col-sm-3">
+                <span class="ribbon16"><i class="fas fa-check-circle fa-2x"></i></span>
+                <div class="task d<%= task.rating %> text-center">
+                    <%= task.task_en %><br>
+                    <%= link_to edit_task_path(task.id), class: "link-text" do %>
+                        <i class="fas fa-eye"></i>
+                    <% end %>
+                    <%= task.updated_at.strftime('%Y/%m/%d %H:%M') %>
+                </div>
+            </div>
+        <% end %>
+        <div class="col-xs-12">
+            <%= link_to "過去の完了タスク一覧", complete_tasks_path, class: "btn btn-warning btn-lg btn-block" %>
+        </div><br>
+    </div><br>
+</div><br>

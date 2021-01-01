@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
     collection do
       get "/complete" => "tasks#complete", as: "complete"
+      get "/today" => "tasks#today", as: "today"
       patch "/complete_all" => "tasks#change_all", as: "change_all"
       delete "/" => "tasks#destroy_all", as: "delete_all"
     end

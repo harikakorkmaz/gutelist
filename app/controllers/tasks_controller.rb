@@ -10,9 +10,8 @@ class TasksController < ApplicationController
   def index
     tasks = current_user.tasks
     @active_tasks = tasks.where(is_active: true)
-    @complete_tasks = tasks.where('updated_at > ?', Date.today)
-    @passive_tasks = @complete_tasks.where(is_active: false)
-    @task = Task.new
+    complete_tasks = tasks.where('updated_at > ?', Date.today)
+    @passive_tasks = complete_tasks.where(is_active: false)
   end
 
   def new
@@ -85,10 +84,15 @@ class TasksController < ApplicationController
 
   def complete
     tasks = current_user.tasks
-    @complete_tasks = tasks.where('updated_at > ?', !Date.today)
-    @passive_tasks = @complete_tasks.where(is_active: false)
-    @tasks = @passive_tasks.all.order(updated_at: :desc)
-    @tasks = @passive_tasks.page(params[:page]).per(13)
+    passive_tasks = tasks.where(is_active: false)
+    @tasks = passive_tasks.all.order(updated_at: :desc)
+    @tasks = passive_tasks.page(params[:page]).per(12)
+  end
+
+  def today
+    tasks = current_user.tasks
+    complete_tasks = tasks.where('updated_at > ?', Date.today)
+    @passive_tasks = complete_tasks.where(is_active: false)
   end
 
   private
