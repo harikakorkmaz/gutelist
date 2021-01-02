@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @completed_tasks = @user.completed_tasks
   end
 
   def followings

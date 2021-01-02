@@ -8,6 +8,7 @@ class TasksController < ApplicationController
   end
 
   def index
+    @completed_tasks = current_user.completed_tasks
     tasks = current_user.tasks
     @active_tasks = tasks.where(is_active: true)
     complete_tasks = tasks.where('updated_at > ?', Date.today)
@@ -99,5 +100,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:task_ja, :task_en, :rating, :is_active)
+  end
+
+  def tasknew_params
+    params.permit(:task_id, :rating, :start_time)
   end
 end

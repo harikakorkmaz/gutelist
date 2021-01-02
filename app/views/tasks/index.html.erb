@@ -59,7 +59,14 @@
             </div><br>
         </div>
         <div class="main_group calender col-sm-6">
-
+            <%= month_calendar events: @completed_tasks do |date, tasks| %>
+                <%= date.day %>
+                <div class="flexbox">
+                    <% tasks.each do |task| %><br>
+                        <div class="completed_task d<%= task.rating %>"></div>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
     </div><br>
 </div><br>
