@@ -95,7 +95,7 @@ footer {
   margin: 30px;
 }
 
-.d2, .d3 {
+.d2 {
   background-color: #c93a40;
   color: white;
 }
@@ -105,7 +105,7 @@ footer {
   color: white;
 }
 
-.d, .d0 {
+.d {
   background-color: #2d9b41;
   color: white;
 }
@@ -178,7 +178,7 @@ footer {
 .top1 {
   background-image: image-url("top1.png");
   width: auto;
-  height: 600px;
+  height: 350px;
   background-size: cover;
   background-position: center;
 }
@@ -210,6 +210,16 @@ footer {
   background-size: cover;
   background-position: center;
 }
+
+.top5 {
+  background-image: image-url("top-index.png");
+  width: auto;
+  height: 820px;
+  margin-bottom: 20px ;
+  padding-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+  }
 
 .top_group {
   margin: 40px 0;
@@ -484,31 +494,7 @@ footer {
     display: none;
   }
 
-  .top1 {
-    background-image: none;
-    width: 0;
-    height: 0;
-    background-size: 0;
-    background-position: 0;
-  }
-
-  .top2 {
-    background-image: none;
-    width: 0;
-    height: 0;
-    background-size: 0;
-    background-position: 0;
-  }
-
-  .top3 {
-    background-image: none;
-    width: 0;
-    height: 0;
-    background-size: 0;
-    background-position: 0;
-  }
-
-  .top4 {
+  .top1, .top2, .top3, .top4, .top5 {
     background-image: none;
     width: 0;
     height: 0;
