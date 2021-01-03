@@ -6,90 +6,128 @@
       <% end %>
     </ul>
   <% end %>
-  <div class="row">
-    <div class="col-xs-12">
-      <table class="table table-hover">
-      	<thead>
-      	  <h2 class="text-center"><i class="far fa-eye"></i>タスク詳細</h2>
-        		<tr>
-        		  <th class="col-xs-2"></th>
-        			<th class="col-xs-10"></th>
-        		</tr>
-        	</thead>
-        	<tbody class="text-center">
-        		<tr>
-        			<td>日本語</td>
-        			<td><%= @task.task_ja %></td>
-        		</tr>
-        		<tr>
-        			<td>重要度</td>
-        			<td><span class="rating" data-score="<%= @task.rating %>"></span></td>
-        		</tr>
-        		<tr>
-        			<td>英語</td>
-        			<td><%= @task.task_en %></td>
-        		</tr>
-        		<tr>
-        			<td>作成日</td>
-        			<td><%= @task.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        		</tr>
-        		<tr>
-        			<td><%= link_to "戻る", tasks_path, class: "btn btn-success" %></td>
-        			<td><%= link_to "削除", task_path(@task.id), method: :delete, class: "btn btn-danger" %></td>
-        		</tr>
-      	</tbody>
-      </table>
-    </div>
-  </div><br>
-  <div class="row"><br>
-    <div class="text-center col-xs-12">
-      <%= form_with model: @task, remote: true do |f| %>
-        <h2 class="text-center"><i class="far fa-edit"></i>タスク編集</h2><br>
-        <div class="text_area">
-          <div id="translate"><%= f.text_area :task_ja, class: "task_ja", size: "38x3", placeholder: "日本語で入力後、ポインタを離して翻訳開始" %></div>
-          <%= f.label "※最低4文字以上" %>
-        </div><br>
-        <div>
-          <label>重要度</label>
-          <div class="star"><%= f.select :rating, [["☆☆", ""], ["★☆︎", 1], ["★★︎", 2]] %></div>
-        </div><br>
-        <div class="text_area">
-          <%= f.text_area :task_en, class: "task_en", size: "38x3", placeholder: "英語（自動で翻訳されます）" %><br>
-          <%= f.label "※自動で入力されない場合はリロードしてください" %>
-        </div><br>
-        <div class="submit">
-          <%= f.submit  "保存", method: :post, class: "btn btn-warning" %>
-        </div>
-      <% end %>
-    </div><br>
+  <% if @task.is_active == false %>
     <div class="row">
       <div class="col-xs-12">
-        <div class="blank"></div>
+        <table class="table table-hover">
+        	<thead>
+        	  <h2 class="text-center"><i class="far fa-eye"></i>タスク詳細</h2>
+          		<tr>
+          		  <th class="col-xs-2"></th>
+          			<th class="col-xs-10"></th>
+          		</tr>
+          	</thead>
+          	<tbody class="text-center">
+          		<tr>
+          			<td>日本語</td>
+          			<td><%= @task.task_ja %></td>
+          		</tr>
+          		<tr>
+          			<td>重要度</td>
+          			<td><span class="rating" data-score="<%= @task.rating %>"></span></td>
+          		</tr>
+          		<tr>
+          			<td>英語</td>
+          			<td><%= @task.task_en %></td>
+          		</tr>
+          		<tr>
+          			<td>完了日</td>
+          			<td><%= @task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+          		</tr>
+          		<tr>
+          			<td><%= link_to "戻る", tasks_path, class: "link-text btn btn-success" %></td>
+          			<td><%= link_to "復活させる", change_task_path(@task.id), method: :patch, class: "link-text btn btn-info" %></td>
+          		</tr>
+        	</tbody>
+        </table>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="text-center col-md-4">
-        <i class="far fa-question-circle fa-2x"></i><br>
-        <h4>重要度の色分け</h4><br>
-        <div class="col-xs-4">
-          <i class="far fa-star fa-2x"></i><i class="far fa-star fa-2x"></i>
-          <div class="d new_box"></div>
-        </div>
-        <div class="col-xs-4">
-          <i class="fas fa-star fa-2x"></i>
-          <i class="far fa-star fa-2x"></i>
-          <div class="d1 new_box"></div>
-        </div>
-        <div class="col-xs-4">
-          <i class="fas fa-star fa-2x"></i>
-          <i class="fas fa-star fa-2x"></i>
-          <div class="d2 new_box"></div>
-        </div>
-      </div>
-      <div class="col-md-4"></div>
     </div><br>
-  </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-12">
+        <table class="table table-hover">
+        	<thead>
+        	  <h2 class="text-center"><i class="far fa-eye"></i>タスク詳細</h2>
+          		<tr>
+          		  <th class="col-xs-2"></th>
+          			<th class="col-xs-10"></th>
+          		</tr>
+          	</thead>
+          	<tbody class="text-center">
+          		<tr>
+          			<td>日本語</td>
+          			<td><%= @task.task_ja %></td>
+          		</tr>
+          		<tr>
+          			<td>重要度</td>
+          			<td><span class="rating" data-score="<%= @task.rating %>"></span></td>
+          		</tr>
+          		<tr>
+          			<td>英語</td>
+          			<td><%= @task.task_en %></td>
+          		</tr>
+          		<tr>
+          			<td>作成日</td>
+          			<td><%= @task.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          		</tr>
+          		<tr>
+          			<td><%= link_to "戻る", tasks_path, class: "link-text btn btn-success" %></td>
+          			<td><%= link_to "削除", task_path(@task.id), method: :delete, class: "link-text btn btn-danger" %></td>
+          		</tr>
+        	</tbody>
+        </table>
+      </div>
+    </div><br>
+    <div class="row"><br>
+      <div class="text-center col-xs-12">
+        <%= form_with model: @task, remote: true do |f| %>
+          <h2 class="text-center"><i class="far fa-edit"></i>タスク編集</h2><br>
+          <div class="text_area">
+            <div id="translate"><%= f.text_area :task_ja, class: "task_ja", size: "38x3", placeholder: "日本語で入力後、ポインタを離して翻訳開始" %></div>
+            <%= f.label "※最低4文字以上" %>
+          </div><br>
+          <div>
+            <label>重要度</label>
+            <div class="star"><%= f.select :rating, [["☆☆", ""], ["★☆", 1], ["★★", 2]] %></div>
+          </div><br>
+          <div class="text_area">
+            <%= f.text_area :task_en, class: "task_en", size: "38x3", placeholder: "英語（自動で翻訳されます）" %><br>
+            <%= f.label "※自動で入力されない場合はリロードしてください" %>
+          </div><br>
+          <div class="submit">
+            <%= f.submit  "保存", method: :post, class: "btn btn-warning" %>
+          </div>
+        <% end %>
+      </div><br>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="blank"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="text-center col-md-4">
+          <i class="far fa-question-circle fa-2x"></i><br>
+          <h4>重要度の色分け</h4><br>
+          <div class="col-xs-4">
+            <i class="far fa-star fa-2x"></i><i class="far fa-star fa-2x"></i>
+            <div class="d new_box"></div>
+          </div>
+          <div class="col-xs-4">
+            <i class="fas fa-star fa-2x"></i>
+            <i class="far fa-star fa-2x"></i>
+            <div class="d1 new_box"></div>
+          </div>
+          <div class="col-xs-4">
+            <i class="fas fa-star fa-2x"></i>
+            <i class="fas fa-star fa-2x"></i>
+            <div class="d2 new_box"></div>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div><br>
+    </div>
+  <% end %>
 </div>
 
 <script>

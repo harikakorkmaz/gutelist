@@ -8,11 +8,11 @@ class TasksController < ApplicationController
   end
 
   def index
+    @completed_tasks = current_user.completed_tasks
     tasks = current_user.tasks
     @active_tasks = tasks.where(is_active: true)
-    @complete_tasks = tasks.where('updated_at > ?', Date.today)
-    @passive_tasks = @complete_tasks.where(is_active: false)
-    @task = Task.new
+    passive_tasks = tasks.where(is_active: false)
+    @passive_tasks = passive_tasks.where('updated_at > ?', Date.today)
   end
 
   def new
@@ -36,15 +36,14 @@ class TasksController < ApplicationController
   end
 
   # def destroy_all
-  #   if self == nil?
-  #     redirect_to complete_tasks_path
-  #   else
-  #     tasks = current_user.tasks
-  #     deletable_tasks = tasks.where(updated_at < Date.yesterday)
-  #     @passive_tasks = deletable_tasks.where(is_active: false)
-  #     @passive_tasks.destroy_all
-  #     redirect_to complete_tasks_path
+  #   tasks = current_user.tasks
+  #   passive_tasks = tasks.where(is_active: false)
+  #   passive_tasks.each do |task|
+  #     if task.updated_at == ! Date.today
+  #       task.destroy
+  #     end
   #   end
+  #   redirect_to complete_tasks_path, notice: "削除されました"
   # end
 
   def edit
@@ -67,8 +66,13 @@ class TasksController < ApplicationController
 
   def change
     @task = Task.find(params[:id])
-    @task.update(is_active: false)
-    redirect_to tasks_path
+    if @task.is_active == true
+      @task.update(is_active: false)
+      redirect_to tasks_path
+    else
+      @task.update(is_active: true)
+      redirect_to tasks_path
+    end
   end
 
   def change_all
@@ -80,15 +84,24 @@ class TasksController < ApplicationController
 
   def complete
     tasks = current_user.tasks
-    @complete_tasks = tasks.where('updated_at > ?', !Date.today)
-    @passive_tasks = @complete_tasks.where(is_active: false)
-    @tasks = @passive_tasks.all.order(updated_at: :desc)
-    @tasks = @passive_tasks.page(params[:page]).per(13)
+    passive_tasks = tasks.where(is_active: false)
+    @tasks = passive_tasks.all.order(updated_at: :desc)
+    @tasks = passive_tasks.page(params[:page]).per(12)
+  end
+
+  def today
+    tasks = current_user.tasks
+    complete_tasks = tasks.where('updated_at > ?', Date.today)
+    @passive_tasks = complete_tasks.where(is_active: false)
   end
 
   private
 
   def task_params
     params.require(:task).permit(:task_ja, :task_en, :rating, :is_active)
+  end
+
+  def tasknew_params
+    params.permit(:task_id, :rating, :start_time)
   end
 end

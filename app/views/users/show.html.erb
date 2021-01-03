@@ -48,5 +48,17 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</div><br>
+	<div class="row">
+    <div class="main_group calender col-sx-12">
+        <%= month_calendar events: @completed_tasks do |date, tasks| %>
+            <%= date.day %>
+            <div class="flexbox">
+                <% tasks.each do |task| %><br>
+                    <div class="completed_task d<%= task.rating %>"></div>
+                <% end %>
+            </div>
+        <% end %>
+    </div><br>
+	</div><br>
 </div>

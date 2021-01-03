@@ -24,7 +24,7 @@
                             <i class="main_task fas fa-edit"></i>
                         <% end %>
                         <%= task.created_at.strftime('%Y/%m/%d %H:%M') %>
-                        <%= link_to change_task_path(task.id), method: :patch  do%>
+                        <%= link_to change_task_path(task.id), method: :patch  do %>
                             <i class="main_task fas fa-check-circle"></i>
                         <% end %>
                     </div>
@@ -45,18 +45,28 @@
     </div><br><br>
 
     <h2>本日完了のタスク</h2>
-    <div class="task-group main_group row">
-        <% @passive_tasks.each do |task| %>
-            <div class="completed-task col-sm-3">
-                <span class="ribbon16"><i class="fas fa-check-circle fa-2x"></i></span>
-                <div class="task d<%= task.rating %> text-center">
-                    <%= task.task_en %><br>
-                    <%= task.updated_at.strftime('%Y/%m/%d %H:%M') %>
+    <div class="task-group row">
+        <div class="main_group col-sm-6">
+            <div class="flex">
+            <% @passive_tasks.each do |task| %>
+                <%= link_to edit_task_path(task.id), class: "link-text" do %>
+                    <div class="complete-task d<%= task.rating %>"></div>
+                <% end %>
+            <% end %>
+            </div><br>
+            <div class="col-sm-12">
+                <%= link_to "完了タスク一覧", today_tasks_path, class: "btn btn-warning btn-lg btn-block" %>
+            </div><br>
+        </div>
+        <div class="main_group calender col-sm-6">
+            <%= month_calendar events: @completed_tasks do |date, tasks| %>
+                <%= date.day %>
+                <div class="flexbox">
+                    <% tasks.each do |task| %><br>
+                        <div class="completed_task d<%= task.rating %>"></div>
+                    <% end %>
                 </div>
-            </div>
-        <% end %>
-        <div class="col-xs-12">
-            <%= link_to "完了タスク一覧", complete_tasks_path, class: "btn btn-warning btn-lg btn-block" %>
-        </div><br>
+            <% end %>
+        </div>
     </div><br>
 </div><br>

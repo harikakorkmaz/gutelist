@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -96,7 +97,6 @@ footer {
 
 .d2 {
   background-color: #c93a40;
-  opacity : 0.95;
   color: white;
 }
 
@@ -107,7 +107,6 @@ footer {
 
 .d {
   background-color: #2d9b41;
-  opacity : 0.95;
   color: white;
 }
 .ribbon16-wrapper {
@@ -176,15 +175,15 @@ footer {
    margin-top: 20px;
 }
 
-.top1{
+.top1 {
   background-image: image-url("top1.png");
   width: auto;
-  height: 600px;
+  height: 350px;
   background-size: cover;
   background-position: center;
 }
 
-.top2{
+.top2 {
   background-image: image-url("top3.png");
   width: auto;
   height: 530px;
@@ -192,7 +191,7 @@ footer {
   background-position: center;
 }
 
-.top3{
+.top3 {
   background-image: image-url("top2.png");
   width: auto;
   height: 500px;
@@ -211,6 +210,16 @@ footer {
   background-size: cover;
   background-position: center;
 }
+
+.top5 {
+  background-image: image-url("top-index.png");
+  width: auto;
+  height: 820px;
+  margin-bottom: 20px ;
+  padding-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+  }
 
 .top_group {
   margin: 40px 0;
@@ -295,6 +304,41 @@ footer {
 .info p {
     margin: 0;
     padding: 0;
+}
+
+.link-text:link {
+  color: white;
+}
+
+.link-text:visited {
+  color: white;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 45vmin;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.complete-task {
+  width: 10vmin;
+  height: 10vmin;
+  border-radius:  5px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+  margin: 0.5vmin;
+}
+
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.completed_task {
+  width: 1vmin;
+  height: 1vmin;
+  margin: 0.1vmin ;
 }
 
 /* ---------------------------- */
@@ -390,10 +434,25 @@ footer {
   .text_area {
     margin: auto;
   }
+
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 42vmin;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .complete-task {
+    width: 7.5vmin;
+    height: 7.5vmin;
+    border-radius:  5px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+    margin: 0.5vmin;
+  }
 }
 
 @media screen and (max-width:768px) {
-
 
   h2, h3, h4, h5 {
    font-size: 90%;
@@ -435,31 +494,7 @@ footer {
     display: none;
   }
 
-  .top1 {
-    background-image: none;
-    width: 0;
-    height: 0;
-    background-size: 0;
-    background-position: 0;
-  }
-
-  .top2 {
-    background-image: none;
-    width: 0;
-    height: 0;
-    background-size: 0;
-    background-position: 0;
-  }
-
-  .top3 {
-    background-image: none;
-    width: 0;
-    height: 0;
-    background-size: 0;
-    background-position: 0;
-  }
-
-  .top4 {
+  .top1, .top2, .top3, .top4, .top5 {
     background-image: none;
     width: 0;
     height: 0;
@@ -476,6 +511,28 @@ footer {
 
   .top-text {
     line-height: 150%;
+  }
+
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vmin;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .complete-task {
+    width: 16vmin;
+    height: 16vmin;
+    border-radius:  5px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
+    margin: 2vmin;
+  }
+
+.completed_task {
+  width: 1.5vmin;
+  height: 1.5vmin;
+  margin: 0.15vmin ;
   }
 }
 
