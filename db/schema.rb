@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2021_01_01_153835) do
 
   create_table "completed_tasks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "task_id", null: false
-    t.integer "rating", default: 0, null: false
+    t.integer "user_id"
+    t.integer "task_id"
+    t.integer "rating"
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_completed_tasks_on_task_id"
+    t.index ["user_id"], name: "index_completed_tasks_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

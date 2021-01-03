@@ -24,7 +24,7 @@
                             <i class="main_task fas fa-edit"></i>
                         <% end %>
                         <%= task.created_at.strftime('%Y/%m/%d %H:%M') %>
-                        <%= link_to change_task_path(task.id), method: :patch  do%>
+                        <%= link_to change_task_path(task.id), method: :patch  do %>
                             <i class="main_task fas fa-check-circle"></i>
                         <% end %>
                     </div>

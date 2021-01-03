@@ -11,8 +11,8 @@ class TasksController < ApplicationController
     @completed_tasks = current_user.completed_tasks
     tasks = current_user.tasks
     @active_tasks = tasks.where(is_active: true)
-    complete_tasks = tasks.where('updated_at > ?', Date.today)
-    @passive_tasks = complete_tasks.where(is_active: false)
+    passive_tasks = tasks.where(is_active: false)
+    @passive_tasks = passive_tasks.where('updated_at > ?', Date.today)
   end
 
   def new
@@ -36,15 +36,14 @@ class TasksController < ApplicationController
   end
 
   # def destroy_all
-  #   if self == nil?
-  #     redirect_to complete_tasks_path
-  #   else
-  #     tasks = current_user.tasks
-  #     deletable_tasks = tasks.where(updated_at < Date.yesterday)
-  #     @passive_tasks = deletable_tasks.where(is_active: false)
-  #     @passive_tasks.destroy_all
-  #     redirect_to complete_tasks_path
+  #   tasks = current_user.tasks
+  #   passive_tasks = tasks.where(is_active: false)
+  #   passive_tasks.each do |task|
+  #     if task.updated_at == ! Date.today
+  #       task.destroy
+  #     end
   #   end
+  #   redirect_to complete_tasks_path, notice: "削除されました"
   # end
 
   def edit
