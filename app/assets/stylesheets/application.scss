@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
@@ -94,7 +95,7 @@ footer {
   margin: 30px;
 }
 
-.d2 {
+.d2, .d3 {
   background-color: #c93a40;
   color: white;
 }
@@ -104,7 +105,7 @@ footer {
   color: white;
 }
 
-.d {
+.d, .d0 {
   background-color: #2d9b41;
   color: white;
 }
@@ -174,7 +175,7 @@ footer {
    margin-top: 20px;
 }
 
-.top1{
+.top1 {
   background-image: image-url("top1.png");
   width: auto;
   height: 600px;
@@ -182,7 +183,7 @@ footer {
   background-position: center;
 }
 
-.top2{
+.top2 {
   background-image: image-url("top3.png");
   width: auto;
   height: 530px;
@@ -190,7 +191,7 @@ footer {
   background-position: center;
 }
 
-.top3{
+.top3 {
   background-image: image-url("top2.png");
   width: auto;
   height: 500px;
@@ -305,10 +306,10 @@ footer {
 
 .flex {
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   width: 45vmin;
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .complete-task {
@@ -317,6 +318,17 @@ footer {
   border-radius:  5px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
   margin: 0.5vmin;
+}
+
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.completed_task {
+  width: 1vmin;
+  height: 1vmin;
+  margin: 0.1vmin ;
 }
 
 /* ---------------------------- */
@@ -415,7 +427,7 @@ footer {
 
   .flex {
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     width: 42vmin;
     margin-left: auto;
     margin-right: auto;
@@ -431,7 +443,6 @@ footer {
 }
 
 @media screen and (max-width:768px) {
-
 
   h2, h3, h4, h5 {
    font-size: 90%;
@@ -518,7 +529,7 @@ footer {
 
   .flex {
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     width: 80vmin;
     margin-left: auto;
     margin-right: auto;
@@ -530,6 +541,12 @@ footer {
     border-radius:  5px;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.25);
     margin: 2vmin;
+  }
+
+.completed_task {
+  width: 1.5vmin;
+  height: 1.5vmin;
+  margin: 0.15vmin ;
   }
 }
 

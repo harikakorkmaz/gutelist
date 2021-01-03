@@ -24,7 +24,7 @@
                             <i class="main_task fas fa-edit"></i>
                         <% end %>
                         <%= task.created_at.strftime('%Y/%m/%d %H:%M') %>
-                        <%= link_to change_task_path(task.id), method: :patch  do%>
+                        <%= link_to change_task_path(task.id), method: :patch  do %>
                             <i class="main_task fas fa-check-circle"></i>
                         <% end %>
                     </div>
@@ -59,7 +59,14 @@
             </div><br>
         </div>
         <div class="main_group calender col-sm-6">
-
+            <%= month_calendar events: @completed_tasks do |date, tasks| %>
+                <%= date.day %>
+                <div class="flexbox">
+                    <% tasks.each do |task| %><br>
+                        <div class="completed_task d<%= task.rating %>"></div>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
     </div><br>
 </div><br>

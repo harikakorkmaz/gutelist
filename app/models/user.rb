@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
 
+  has_many :completed_tasks, dependent: :destroy
+
   attachment :image
 
   validates :name, presence: true, length: { in: 2..15}

@@ -24,6 +24,11 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/completed_task/admin" => "completed_tasks#admin", as: "admin"
+  patch "/completed_task/admin_create" => "completed_tasks#create", as: "admin_create"
+  patch "/completed_task/admin_all_create" => "completed_tasks#all_create", as: "admin_all_create"
+
+
   resources :users, only: [:edit, :update, :index, :show] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'users#followings', as: 'followings'
