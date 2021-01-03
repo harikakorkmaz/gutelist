@@ -50,6 +50,11 @@
 		</div>
 	</div><br>
 	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="text-center"><%= @user.name %>さんのアクティビティ</h2>
+		</div>
+	</div><br>
+	<div class="row">
     <div class="main_group calender col-sx-12">
         <%= month_calendar events: @completed_tasks do |date, tasks| %>
             <%= date.day %>
@@ -61,4 +66,4 @@
         <% end %>
     </div><br>
 	</div><br>
-</div>
+</div><br>
