@@ -71,6 +71,10 @@
           			<td><%= @task.created_at.strftime('%Y/%m/%d %H:%M') %></td>
           		</tr>
           		<tr>
+          			<td>感情分析スコア</td>
+          			<td><%= @task.score %></td>
+          		</tr>
+          		<tr>
           			<td><%= link_to "戻る", tasks_path, class: "link-text btn btn-success" %></td>
           			<td><%= link_to "削除", task_path(@task.id), method: :delete, class: "link-text btn btn-danger" %></td>
           		</tr>
