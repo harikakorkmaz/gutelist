@@ -35,6 +35,17 @@
           			<td><%= @task.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
           		</tr>
           		<tr>
+          			<td>感情分析スコア</td>
+          			<td>
+            			<% if @task.score >= 0 %>
+            			  <i class="fas fa-smile"></i><br>
+            			<% else %>
+            			  <i class="fas fa-meh"></i><br>
+            			<% end %>
+            			<%= @task.score %>
+          			</td>
+          		</tr>
+          		<tr>
           			<td><%= link_to "戻る", tasks_path, class: "link-text btn btn-success" %></td>
           			<td><%= link_to "復活させる", change_task_path(@task.id), method: :patch, class: "link-text btn btn-info" %></td>
           		</tr>
@@ -72,7 +83,14 @@
           		</tr>
           		<tr>
           			<td>感情分析スコア</td>
-          			<td><%= @task.score %></td>
+          			<td>
+            			<% if @task.score >= 0 %>
+            			  <i class="fas fa-smile fa-2x"></i><br>
+            			<% else %>
+            			  <i class="fas fa-meh fa-2x"></i><br>
+            			<% end %>
+            			<%= @task.score %>
+          			</td>
           		</tr>
           		<tr>
           			<td><%= link_to "戻る", tasks_path, class: "link-text btn btn-success" %></td>
