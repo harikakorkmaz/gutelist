@@ -37,12 +37,16 @@
           		<tr>
           			<td>感情分析スコア</td>
           			<td>
-            			<% if @task.score >= 0 %>
-            			  <i class="fas fa-smile"></i><br>
-            			<% else %>
-            			  <i class="fas fa-meh"></i><br>
-            			<% end %>
-            			<%= @task.score %>
+                  <% if @task.score.nil? %>
+                    <p>データがありません</p>
+                  <% else %>
+                    <% if @task.score >= 0 %>
+                      <i class="fas fa-smile fa-2x"></i><br>
+                    <% else %>
+                      <i class="fas fa-meh fa-2x"></i><br>
+                    <% end %>
+                    <%= @task.score %>
+                  <% end %>
           			</td>
           		</tr>
           		<tr>
@@ -84,12 +88,16 @@
           		<tr>
           			<td>感情分析スコア</td>
           			<td>
-            			<% if @task.score >= 0 %>
-            			  <i class="fas fa-smile fa-2x"></i><br>
-            			<% else %>
-            			  <i class="fas fa-meh fa-2x"></i><br>
-            			<% end %>
-            			<%= @task.score %>
+                  <% if @task.score.nil? %>
+                    <p>データがありません</p>
+                  <% else %>
+                    <% if @task.score >= 0 %>
+                      <i class="fas fa-smile fa-2x"></i><br>
+                    <% else %>
+                      <i class="fas fa-meh fa-2x"></i><br>
+                    <% end %>
+                    <%= @task.score %>
+                  <% end %>
           			</td>
           		</tr>
           		<tr>
