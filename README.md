@@ -34,18 +34,18 @@ Get used to English(英語に慣れる)の頭文字をとりました。
 https://docs.google.com/spreadsheets/d/1O3AOfP5oadgQrJuhIVwjtAyP99fvGPkwEegb1Hu2dPE/edit#gid=1287297668
 
 ### 機能一覧
--ユーザー認証(devise)
--翻訳機能(Google Apps Script)
--翻訳機能の非同期通信(Ajax)
--フォロー機能
--カレンダー機能(simple_calendar)
--画像アップロード機能(Refile)
--画像プレビュー機能(jQuery)
--テスト(Rspec)
--HTTPS化(Certbot)
--自動デプロイ(Github Actions)
--Google Natural Language API
--レスポンシブ対応(Flexbox)
+- ユーザー認証(devise)
+- 翻訳機能(Google Apps Script)
+- 翻訳機能の非同期通信(Ajax)
+- フォロー機能
+- カレンダー機能(simple_calendar)
+- 画像アップロード機能(Refile)
+- 画像プレビュー機能(jQuery)
+- テスト(Rspec)
+- HTTPS化(Certbot)
+- 自動デプロイ(Github Actions)
+- Google Natural Language API
+- レスポンシブ対応(Flexbox)
 
 https://docs.google.com/spreadsheets/d/1yOyAfTLTmr4cLwHEWo-rbx8XJXJy-hTj_RBrnoiZEc8/edit#gid=705990360
 
