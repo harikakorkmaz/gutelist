@@ -1,5 +1,5 @@
 # ぐてリスト  
-# https://gutelist.com　
+# https://gutelist.com
 翻訳機能付タスク管理アプリ
 
 ## サイト概要
