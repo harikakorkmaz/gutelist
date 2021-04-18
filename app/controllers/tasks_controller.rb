@@ -21,7 +21,6 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.score = Language.get_data(task_params[:task_ja])
     @task.user_id = current_user.id
     if @task.save
       redirect_to '/tasks'
@@ -59,7 +58,6 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-    @task.score = Language.get_data(task_params[:task_ja])
     @task.save
       redirect_to tasks_path
     else
