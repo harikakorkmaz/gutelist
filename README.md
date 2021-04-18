@@ -39,13 +39,9 @@ https://docs.google.com/spreadsheets/d/1O3AOfP5oadgQrJuhIVwjtAyP99fvGPkwEegb1Hu2
 - カレンダー機能(simple_calendar)
 - 画像アップロード機能(Refile)
 - 画像プレビュー機能(jQuery)
-- テスト(Rspec)
 - HTTPS化(AWS)
 - 自動デプロイ(Github Actions)
-- Google Natural Language API
 - レスポンシブ対応(Flexbox)
-
-https://docs.google.com/spreadsheets/d/1yOyAfTLTmr4cLwHEWo-rbx8XJXJy-hTj_RBrnoiZEc8/edit#gid=705990360
 
 ## 開発環境
 - OS：Linux(CentOS)
